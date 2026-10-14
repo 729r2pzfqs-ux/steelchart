@@ -445,10 +445,13 @@ class Site:
                     "category": "Pocket knife" if "Fixed" not in (k.get("category") or "") else "Fixed-blade knife",
                     "additionalProperty": [{"@type": "PropertyValue", "name": n, "value": v} for n, v in (
                         ("Blade length (in)", k.get("blade_length_in")), ("Weight (oz)", k.get("weight_oz")),
-                        ("Lock", k.get("lock_type")), ("Handle", k.get("handle_material"))) if v]}
+                        ("Lock", k.get("lock_type")), ("Handle", k.get("handle_material"))) if v],
+                    "offers": {"@type": "Offer", "price": k.get("msrp_usd"), "priceCurrency": "USD",
+                               "url": k.get("verified_url")}}
+            # Google needs an offer for a valid Product; without a list price, leave the Product off
             self.render("knife.html", f"/knife/{k['id']}/", title, desc,
                         crumbs=[("/", "Home"), ("/knife/", "Knives"), (f"/knife/{k['id']}/", k["name"])],
-                        jsonld=[prod], priority=0.7, k=k, s=s, same_steel=same_steel, same_brand=same_brand,
+                        jsonld=[prod] if k.get("msrp_usd") else [], priority=0.7, k=k, s=s, same_steel=same_steel, same_brand=same_brand,
                         similar_price=similar_price, brand=self.B[k["brand"]], checked="2026-10-14",
                         steel_comps=s["comparisons"][:5])
             self.search.append({"t": k["name"], "u": f"/knife/{k['id']}/", "d": f"{s['short']} steel", "k": k["model"]})
