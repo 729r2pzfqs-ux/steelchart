@@ -1,0 +1,13 @@
+{% extends "guide_base.html" %}
+{% block article %}
+<p>Knife steels fall into a handful of families. Two questions separate them: does the steel have enough free chromium to resist rust, and is it cast as an ingot or made from powder?</p>
+<h2>Ingot vs powder metallurgy</h2>
+<p>Conventional steel is melted and cast into ingots. As a highly alloyed ingot cools, its carbides grow large and cluster, which makes the blade brittle and hard to grind. Powder metallurgy (PM) atomises the molten alloy into fine powder and consolidates it under heat and pressure, so carbides stay small and evenly spread. PM is what makes steels such as S30V, M390 and MagnaCut practical for knives.</p>
+{% for c in cats %}
+<h2><a href="/category/{{ c.id }}/">{{ c.name }}</a></h2>
+<p>{{ c.description }}</p>
+{% set members = steels|selectattr("category", "equalto", c.id)|list %}
+<p>On SteelChart: {% for s in members|sort(attribute="short") %}<a href="/steel/{{ s.id }}/">{{ s.short }}</a>{% if not loop.last %}, {% endif %}{% endfor %}. Average ratings: edge {{ avg(members, "edge_retention") }}, toughness {{ avg(members, "toughness") }}, corrosion {{ avg(members, "corrosion_resistance") }}, sharpening {{ avg(members, "ease_of_sharpening") }} (out of 10).</p>
+{% endfor %}
+<p>See how the families spread out on the <a href="/chart/">steel chart</a>'s edge retention vs toughness plot.</p>
+{% endblock %}

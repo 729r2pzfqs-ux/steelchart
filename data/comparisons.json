@@ -1,0 +1,352 @@
+[
+ {
+  "id": "14c28n-vs-d2",
+  "steel_a": "14c28n",
+  "steel_b": "d2",
+  "search_volume": 1170,
+  "priority": "high"
+ },
+ {
+  "id": "m390-vs-magnacut",
+  "steel_a": "m390",
+  "steel_b": "magnacut",
+  "search_volume": 1000,
+  "priority": "high"
+ },
+ {
+  "id": "magnacut-vs-s30v",
+  "steel_a": "magnacut",
+  "steel_b": "s30v",
+  "search_volume": 960,
+  "priority": "high"
+ },
+ {
+  "id": "elmax-vs-magnacut",
+  "steel_a": "elmax",
+  "steel_b": "magnacut",
+  "search_volume": 800,
+  "priority": "high"
+ },
+ {
+  "id": "magnacut-vs-s90v",
+  "steel_a": "magnacut",
+  "steel_b": "s90v",
+  "search_volume": 760,
+  "priority": "high"
+ },
+ {
+  "id": "20cv-vs-magnacut",
+  "steel_a": "20cv",
+  "steel_b": "magnacut",
+  "search_volume": 680,
+  "priority": "high"
+ },
+ {
+  "id": "440c-vs-d2",
+  "steel_a": "440c",
+  "steel_b": "d2",
+  "search_volume": 660,
+  "priority": "high"
+ },
+ {
+  "id": "cruwear-vs-magnacut",
+  "steel_a": "cruwear",
+  "steel_b": "magnacut",
+  "search_volume": 610,
+  "priority": "high"
+ },
+ {
+  "id": "magnacut-vs-s35vn",
+  "steel_a": "magnacut",
+  "steel_b": "s35vn",
+  "search_volume": 530,
+  "priority": "high"
+ },
+ {
+  "id": "d2-vs-nitro-v",
+  "steel_a": "d2",
+  "steel_b": "nitro-v",
+  "search_volume": 520,
+  "priority": "high"
+ },
+ {
+  "id": "s30v-vs-s90v",
+  "steel_a": "s30v",
+  "steel_b": "s90v",
+  "search_volume": 500,
+  "priority": "high"
+ },
+ {
+  "id": "8cr13mov-vs-d2",
+  "steel_a": "8cr13mov",
+  "steel_b": "d2",
+  "search_volume": 470,
+  "priority": "medium"
+ },
+ {
+  "id": "m390-vs-s90v",
+  "steel_a": "m390",
+  "steel_b": "s90v",
+  "search_volume": 450,
+  "priority": "medium"
+ },
+ {
+  "id": "3v-vs-magnacut",
+  "steel_a": "3v",
+  "steel_b": "magnacut",
+  "search_volume": 420,
+  "priority": "medium"
+ },
+ {
+  "id": "154cm-vs-d2",
+  "steel_a": "154cm",
+  "steel_b": "d2",
+  "search_volume": 360,
+  "priority": "medium"
+ },
+ {
+  "id": "s30v-vs-s35vn",
+  "steel_a": "s30v",
+  "steel_b": "s35vn",
+  "search_volume": 350,
+  "priority": "medium"
+ },
+ {
+  "id": "d2-vs-s30v",
+  "steel_a": "d2",
+  "steel_b": "s30v",
+  "search_volume": 350,
+  "priority": "medium"
+ },
+ {
+  "id": "d2-vs-vg-10",
+  "steel_a": "d2",
+  "steel_b": "vg-10",
+  "search_volume": 330,
+  "priority": "medium"
+ },
+ {
+  "id": "aus-8-vs-d2",
+  "steel_a": "aus-8",
+  "steel_b": "d2",
+  "search_volume": 320,
+  "priority": "medium"
+ },
+ {
+  "id": "s30v-vs-s45vn",
+  "steel_a": "s30v",
+  "steel_b": "s45vn",
+  "search_volume": 300,
+  "priority": "medium"
+ },
+ {
+  "id": "14c28n-vs-154cm",
+  "steel_a": "14c28n",
+  "steel_b": "154cm",
+  "search_volume": 300,
+  "priority": "medium"
+ },
+ {
+  "id": "elmax-vs-m390",
+  "steel_a": "elmax",
+  "steel_b": "m390",
+  "search_volume": 290,
+  "priority": "medium"
+ },
+ {
+  "id": "154cm-vs-s35vn",
+  "steel_a": "154cm",
+  "steel_b": "s35vn",
+  "search_volume": 270,
+  "priority": "medium"
+ },
+ {
+  "id": "m390-vs-s30v",
+  "steel_a": "m390",
+  "steel_b": "s30v",
+  "search_volume": 270,
+  "priority": "medium"
+ },
+ {
+  "id": "154cm-vs-s30v",
+  "steel_a": "154cm",
+  "steel_b": "s30v",
+  "search_volume": 260,
+  "priority": "medium"
+ },
+ {
+  "id": "sg2-vs-vg-10",
+  "steel_a": "sg2",
+  "steel_b": "vg-10",
+  "search_volume": 250,
+  "priority": "medium"
+ },
+ {
+  "id": "s35vn-vs-s45vn",
+  "steel_a": "s35vn",
+  "steel_b": "s45vn",
+  "search_volume": 240,
+  "priority": "medium"
+ },
+ {
+  "id": "1095-vs-d2",
+  "steel_a": "1095",
+  "steel_b": "d2",
+  "search_volume": 240,
+  "priority": "medium"
+ },
+ {
+  "id": "m4-vs-magnacut",
+  "steel_a": "m4",
+  "steel_b": "magnacut",
+  "search_volume": 210,
+  "priority": "medium"
+ },
+ {
+  "id": "cruwear-vs-s30v",
+  "steel_a": "cruwear",
+  "steel_b": "s30v",
+  "search_volume": 210,
+  "priority": "medium"
+ },
+ {
+  "id": "20cv-vs-s30v",
+  "steel_a": "20cv",
+  "steel_b": "s30v",
+  "search_volume": 250,
+  "priority": "medium"
+ },
+ {
+  "id": "m390-vs-s35vn",
+  "steel_a": "m390",
+  "steel_b": "s35vn",
+  "search_volume": null,
+  "priority": "low"
+ },
+ {
+  "id": "nitro-v-vs-s35vn",
+  "steel_a": "nitro-v",
+  "steel_b": "s35vn",
+  "search_volume": null,
+  "priority": "low"
+ },
+ {
+  "id": "d2-vs-s35vn",
+  "steel_a": "d2",
+  "steel_b": "s35vn",
+  "search_volume": null,
+  "priority": "low"
+ },
+ {
+  "id": "1095-vs-80crv2",
+  "steel_a": "1095",
+  "steel_b": "80crv2",
+  "search_volume": null,
+  "priority": "low"
+ },
+ {
+  "id": "14c28n-vs-8cr13mov",
+  "steel_a": "14c28n",
+  "steel_b": "8cr13mov",
+  "search_volume": null,
+  "priority": "low"
+ },
+ {
+  "id": "14c28n-vs-s35vn",
+  "steel_a": "14c28n",
+  "steel_b": "s35vn",
+  "search_volume": null,
+  "priority": "low"
+ },
+ {
+  "id": "20cv-vs-s35vn",
+  "steel_a": "20cv",
+  "steel_b": "s35vn",
+  "search_volume": null,
+  "priority": "low"
+ },
+ {
+  "id": "s30v-vs-vg-10",
+  "steel_a": "s30v",
+  "steel_b": "vg-10",
+  "search_volume": null,
+  "priority": "low"
+ },
+ {
+  "id": "m390-vs-n690",
+  "steel_a": "m390",
+  "steel_b": "n690",
+  "search_volume": null,
+  "priority": "low"
+ },
+ {
+  "id": "20cv-vs-m390",
+  "steel_a": "20cv",
+  "steel_b": "m390",
+  "search_volume": null,
+  "priority": "related"
+ },
+ {
+  "id": "magnacut-vs-s45vn",
+  "steel_a": "magnacut",
+  "steel_b": "s45vn",
+  "search_volume": null,
+  "priority": "related"
+ },
+ {
+  "id": "14c28n-vs-aeb-l",
+  "steel_a": "14c28n",
+  "steel_b": "aeb-l",
+  "search_volume": null,
+  "priority": "related"
+ },
+ {
+  "id": "14c28n-vs-nitro-v",
+  "steel_a": "14c28n",
+  "steel_b": "nitro-v",
+  "search_volume": null,
+  "priority": "related"
+ },
+ {
+  "id": "sg2-vs-zdp-189",
+  "steel_a": "sg2",
+  "steel_b": "zdp-189",
+  "search_volume": null,
+  "priority": "related"
+ },
+ {
+  "id": "8cr13mov-vs-aus-8",
+  "steel_a": "8cr13mov",
+  "steel_b": "aus-8",
+  "search_volume": null,
+  "priority": "related"
+ },
+ {
+  "id": "lc200n-vs-magnacut",
+  "steel_a": "lc200n",
+  "steel_b": "magnacut",
+  "search_volume": null,
+  "priority": "related"
+ },
+ {
+  "id": "elmax-vs-s35vn",
+  "steel_a": "elmax",
+  "steel_b": "s35vn",
+  "search_volume": null,
+  "priority": "related"
+ },
+ {
+  "id": "cts-xhp-vs-s30v",
+  "steel_a": "cts-xhp",
+  "steel_b": "s30v",
+  "search_volume": null,
+  "priority": "related"
+ },
+ {
+  "id": "hap40-vs-m4",
+  "steel_a": "hap40",
+  "steel_b": "m4",
+  "search_volume": null,
+  "priority": "related"
+ }
+]

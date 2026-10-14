@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block body %}
+<article class="prose">
+<h1>{{ g.title }}</h1>
+<p class="answer">{{ g.summary }}</p>
+{% block article %}{% endblock %}
+<p class="small muted">Ratings are relative 1-10 scores at typical knife hardness; see the <a href="/about/">methodology</a>. Updated {{ updated or "" }}.</p>
+</article>
+<h2>More guides</h2>
+<ul class="link-list">{% for o in guides if o.slug != g.slug %}<li><a href="/guide/{{ o.slug }}/">{{ o.title }}</a></li>{% endfor %}</ul>
+{% endblock %}

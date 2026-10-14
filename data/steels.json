@@ -1,0 +1,1327 @@
+[
+ {
+  "id": "magnacut",
+  "name": "CPM MagnaCut",
+  "short": "MagnaCut",
+  "aliases": [
+   "MagnaCut",
+   "Magnacut",
+   "CPM-MagnaCut"
+  ],
+  "manufacturer": "Crucible (designed by Larrin Thomas)",
+  "country": "USA",
+  "category": "stainless-pm",
+  "process": "PM",
+  "composition": {
+   "C": 1.15,
+   "Cr": 10.7,
+   "Mo": 2.0,
+   "V": 4.0,
+   "Nb": 2.0,
+   "N": 0.2,
+   "Mn": 0.4,
+   "Si": 0.4,
+   "P": 0.03,
+   "S": 0.03
+  },
+  "composition_confidence": "datasheet",
+  "hrc_min": 61,
+  "hrc_max": 64,
+  "hardness_note": null,
+  "ratings": {
+   "edge_retention": 7,
+   "toughness": 8,
+   "corrosion_resistance": 9,
+   "ease_of_sharpening": 5
+  },
+  "brands": [
+   "Spyderco",
+   "Benchmade",
+   "Chris Reeve",
+   "Civivi",
+   "Tactile Knife Co.",
+   "Hogue",
+   "Buck",
+   "Carothers",
+   "Bradford",
+   "Hinderer"
+  ],
+  "price_tier": "Premium",
+  "notes": "Released 2021. Designed so all Cr stays in solution (no chromium carbides): corrosion resistance of S110V with toughness of 4V/CruWear.",
+  "search_volume": 3100
+ },
+ {
+  "id": "d2",
+  "name": "D2",
+  "short": "D2",
+  "aliases": [
+   "AISI D2",
+   "1.2379",
+   "X153CrMoV12",
+   "SKD11"
+  ],
+  "manufacturer": "Generic (AISI)",
+  "country": "USA / various",
+  "category": "tool",
+  "process": "ingot",
+  "composition": {
+   "C": 1.5,
+   "Cr": 12.0,
+   "Mo": 1.0,
+   "V": 0.9,
+   "Mn": 0.4,
+   "Si": 0.4,
+   "P": 0.03,
+   "S": 0.03
+  },
+  "composition_confidence": "standard",
+  "hrc_min": 58,
+  "hrc_max": 61,
+  "hardness_note": null,
+  "ratings": {
+   "edge_retention": 6,
+   "toughness": 3,
+   "corrosion_resistance": 4,
+   "ease_of_sharpening": 4
+  },
+  "brands": [
+   "Civivi",
+   "Kizer",
+   "Benchmade (Adamas)",
+   "Ka-Bar",
+   "Ontario",
+   "QSP",
+   "Bob Dozier",
+   "ESEE (select)"
+  ],
+  "price_tier": "Budget",
+  "notes": "'Semi-stainless' air-hardening die steel; large chromium carbides. Hugely popular in Chinese production knives.",
+  "search_volume": 4900
+ },
+ {
+  "id": "s30v",
+  "name": "CPM S30V",
+  "short": "S30V",
+  "aliases": [
+   "S30V",
+   "CPM-S30V"
+  ],
+  "manufacturer": "Crucible",
+  "country": "USA",
+  "category": "stainless-pm",
+  "process": "PM",
+  "composition": {
+   "C": 1.45,
+   "Cr": 14.0,
+   "Mo": 2.0,
+   "V": 4.0,
+   "Mn": 0.5,
+   "Si": 0.5,
+   "P": 0.03,
+   "S": 0.03
+  },
+  "composition_confidence": "datasheet",
+  "hrc_min": 58,
+  "hrc_max": 61,
+  "hardness_note": null,
+  "ratings": {
+   "edge_retention": 6,
+   "toughness": 4,
+   "corrosion_resistance": 7,
+   "ease_of_sharpening": 4
+  },
+  "brands": [
+   "Spyderco (Paramilitary 2)",
+   "Benchmade",
+   "Buck",
+   "Chris Reeve (pre-2009)",
+   "Kershaw",
+   "Zero Tolerance"
+  ],
+  "price_tier": "Mid-range",
+  "notes": "First steel designed specifically for knives (2001, Crucible + Chris Reeve).",
+  "search_volume": 1800
+ },
+ {
+  "id": "s35vn",
+  "name": "CPM S35VN",
+  "short": "S35VN",
+  "aliases": [
+   "S35VN",
+   "CPM-S35VN"
+  ],
+  "manufacturer": "Crucible",
+  "country": "USA",
+  "category": "stainless-pm",
+  "process": "PM",
+  "composition": {
+   "C": 1.4,
+   "Cr": 14.0,
+   "Mo": 2.0,
+   "V": 3.0,
+   "Nb": 0.5,
+   "Mn": 0.5,
+   "Si": 0.5,
+   "P": 0.03,
+   "S": 0.03
+  },
+  "composition_confidence": "datasheet",
+  "hrc_min": 58,
+  "hrc_max": 61,
+  "hardness_note": null,
+  "ratings": {
+   "edge_retention": 6,
+   "toughness": 5,
+   "corrosion_resistance": 7,
+   "ease_of_sharpening": 5
+  },
+  "brands": [
+   "Chris Reeve",
+   "Spyderco",
+   "Benchmade",
+   "Hinderer",
+   "Zero Tolerance",
+   "Hogue",
+   "Civivi (select)"
+  ],
+  "price_tier": "Mid-range",
+  "notes": "Niobium replaces some V for toughness and machinability.",
+  "search_volume": 1400
+ },
+ {
+  "id": "s45vn",
+  "name": "CPM S45VN",
+  "short": "S45VN",
+  "aliases": [
+   "S45VN",
+   "CPM-S45VN"
+  ],
+  "manufacturer": "Crucible",
+  "country": "USA",
+  "category": "stainless-pm",
+  "process": "PM",
+  "composition": {
+   "C": 1.48,
+   "Cr": 16.0,
+   "Mo": 2.0,
+   "V": 3.0,
+   "Nb": 0.5,
+   "N": 0.15,
+   "Mn": 0.5,
+   "Si": 0.5,
+   "P": 0.03,
+   "S": 0.03
+  },
+  "composition_confidence": "datasheet",
+  "hrc_min": 59,
+  "hrc_max": 61,
+  "hardness_note": null,
+  "ratings": {
+   "edge_retention": 6,
+   "toughness": 5,
+   "corrosion_resistance": 8,
+   "ease_of_sharpening": 5
+  },
+  "brands": [
+   "Chris Reeve (Sebenza 31)",
+   "Spyderco",
+   "Benchmade",
+   "Hinderer",
+   "Pro-Tech"
+  ],
+  "price_tier": "Premium",
+  "notes": "Higher Cr + N for better corrosion resistance than S35VN.",
+  "search_volume": null
+ },
+ {
+  "id": "m390",
+  "name": "M390",
+  "short": "M390",
+  "aliases": [
+   "Bohler M390 Microclean",
+   "M390"
+  ],
+  "manufacturer": "voestalpine Bohler Edelstahl",
+  "country": "Austria",
+  "category": "stainless-pm",
+  "process": "PM",
+  "composition": {
+   "C": 1.9,
+   "Cr": 20.0,
+   "Mo": 1.0,
+   "V": 4.0,
+   "W": 0.6,
+   "Mn": 0.3,
+   "Si": 0.7
+  },
+  "composition_confidence": "datasheet",
+  "hrc_min": 60,
+  "hrc_max": 62,
+  "hardness_note": null,
+  "ratings": {
+   "edge_retention": 8,
+   "toughness": 4,
+   "corrosion_resistance": 9,
+   "ease_of_sharpening": 3
+  },
+  "brands": [
+   "Benchmade",
+   "Spyderco",
+   "WE Knife",
+   "Reate",
+   "Microtech",
+   "Lionsteel",
+   "Shirogorov",
+   "Kizer"
+  ],
+  "price_tier": "Premium",
+  "notes": "20CV and CTS-204P are compositionally identical.",
+  "search_volume": 2400
+ },
+ {
+  "id": "20cv",
+  "name": "CPM 20CV",
+  "short": "20CV",
+  "aliases": [
+   "20CV",
+   "CPM-20CV"
+  ],
+  "manufacturer": "Crucible",
+  "country": "USA",
+  "category": "stainless-pm",
+  "process": "PM",
+  "composition": {
+   "C": 1.9,
+   "Cr": 20.0,
+   "Mo": 1.0,
+   "V": 4.0,
+   "W": 0.6,
+   "Mn": 0.3,
+   "Si": 0.3
+  },
+  "composition_confidence": "datasheet",
+  "hrc_min": 59,
+  "hrc_max": 62,
+  "hardness_note": null,
+  "ratings": {
+   "edge_retention": 8,
+   "toughness": 4,
+   "corrosion_resistance": 9,
+   "ease_of_sharpening": 3
+  },
+  "brands": [
+   "Benchmade (Bugout, 940)",
+   "Hinderer",
+   "Zero Tolerance",
+   "Spyderco",
+   "Hogue",
+   "Pro-Tech"
+  ],
+  "price_tier": "Premium",
+  "notes": "US-made M390 equivalent.",
+  "search_volume": null
+ },
+ {
+  "id": "14c28n",
+  "name": "14C28N",
+  "short": "14C28N",
+  "aliases": [
+   "Sandvik 14C28N",
+   "Alleima 14C28N"
+  ],
+  "manufacturer": "Alleima (Sandvik)",
+  "country": "Sweden",
+  "category": "stainless",
+  "process": "ingot",
+  "composition": {
+   "C": 0.62,
+   "Cr": 14.0,
+   "N": 0.11,
+   "Mn": 0.6,
+   "Si": 0.2,
+   "P": 0.025,
+   "S": 0.01
+  },
+  "composition_confidence": "datasheet",
+  "hrc_min": 57,
+  "hrc_max": 60,
+  "hardness_note": null,
+  "ratings": {
+   "edge_retention": 3,
+   "toughness": 8,
+   "corrosion_resistance": 8,
+   "ease_of_sharpening": 9
+  },
+  "brands": [
+   "Kershaw",
+   "Civivi",
+   "Ruike",
+   "Real Steel",
+   "Morakniv (Garberg, Kansbol)",
+   "Kizer",
+   "QSP"
+  ],
+  "price_tier": "Budget",
+  "notes": "Nitrogen-enhanced 13C26 developed with Kershaw; current budget benchmark.",
+  "search_volume": 2800
+ },
+ {
+  "id": "vg-10",
+  "name": "VG-10",
+  "short": "VG-10",
+  "aliases": [
+   "V-Gold 10",
+   "VG10",
+   "V金10号"
+  ],
+  "manufacturer": "Takefu Special Steel",
+  "country": "Japan",
+  "category": "stainless",
+  "process": "ingot",
+  "composition": {
+   "C": 1.0,
+   "Cr": 15.0,
+   "Mo": 1.0,
+   "V": 0.2,
+   "Co": 1.5,
+   "Mn": 0.5,
+   "Si": 0.6,
+   "P": 0.03,
+   "S": 0.02
+  },
+  "composition_confidence": "datasheet",
+  "hrc_min": 59,
+  "hrc_max": 61,
+  "hardness_note": null,
+  "ratings": {
+   "edge_retention": 5,
+   "toughness": 4,
+   "corrosion_resistance": 7,
+   "ease_of_sharpening": 6
+  },
+  "brands": [
+   "Spyderco",
+   "Fallkniven",
+   "Shun",
+   "Tojiro",
+   "Mcusta",
+   "Cold Steel (San Mai)",
+   "Kai"
+  ],
+  "price_tier": "Mid-range",
+  "notes": "Cobalt improves hardenability; prone to micro-chipping if ground too thin.",
+  "search_volume": 1500
+ },
+ {
+  "id": "8cr13mov",
+  "name": "8Cr13MoV",
+  "short": "8Cr13MoV",
+  "aliases": [
+   "8Cr13",
+   "8Cr13MoV"
+  ],
+  "manufacturer": "Generic (GB/T, Ahonest Changjiang etc.)",
+  "country": "China",
+  "category": "stainless",
+  "process": "ingot",
+  "composition": {
+   "C": 0.8,
+   "Cr": 13.5,
+   "Mo": 0.15,
+   "V": 0.1,
+   "Mn": 0.5,
+   "Si": 0.5,
+   "Ni": 0.2,
+   "P": 0.04,
+   "S": 0.03
+  },
+  "composition_confidence": "standard",
+  "hrc_min": 56,
+  "hrc_max": 59,
+  "hardness_note": null,
+  "ratings": {
+   "edge_retention": 3,
+   "toughness": 5,
+   "corrosion_resistance": 6,
+   "ease_of_sharpening": 8
+  },
+  "brands": [
+   "Spyderco (Tenacious, Persistence)",
+   "Kershaw",
+   "CRKT",
+   "Boker Plus",
+   "Ganzo",
+   "SOG"
+  ],
+  "price_tier": "Budget",
+  "notes": "Chinese near-equivalent of AUS-8.",
+  "search_volume": 3500
+ },
+ {
+  "id": "1095",
+  "name": "1095",
+  "short": "1095",
+  "aliases": [
+   "AISI 1095",
+   "SAE 1095",
+   "C100S"
+  ],
+  "manufacturer": "Generic (AISI/SAE)",
+  "country": "USA",
+  "category": "carbon",
+  "process": "ingot",
+  "composition": {
+   "C": 0.95,
+   "Mn": 0.4,
+   "Si": 0.2,
+   "P": 0.04,
+   "S": 0.05
+  },
+  "composition_confidence": "standard",
+  "hrc_min": 56,
+  "hrc_max": 60,
+  "hardness_note": null,
+  "ratings": {
+   "edge_retention": 3,
+   "toughness": 5,
+   "corrosion_resistance": 1,
+   "ease_of_sharpening": 9
+  },
+  "brands": [
+   "ESEE",
+   "Ka-Bar",
+   "Ontario",
+   "TOPS",
+   "Becker",
+   "Condor (select)",
+   "Schrade"
+  ],
+  "price_tier": "Budget",
+  "notes": "Workhorse US carbon steel; shallow-hardening, needs fast quench. P and S are maximums.",
+  "search_volume": 2000
+ },
+ {
+  "id": "440c",
+  "name": "440C",
+  "short": "440C",
+  "aliases": [
+   "SUS440C",
+   "X105CrMo17",
+   "1.4125"
+  ],
+  "manufacturer": "Generic (AISI)",
+  "country": "USA / various",
+  "category": "stainless",
+  "process": "ingot",
+  "composition": {
+   "C": 1.05,
+   "Cr": 17.0,
+   "Mo": 0.75,
+   "Mn": 1.0,
+   "Si": 1.0,
+   "Ni": 0.5,
+   "P": 0.04,
+   "S": 0.03
+  },
+  "composition_confidence": "standard",
+  "hrc_min": 57,
+  "hrc_max": 59,
+  "hardness_note": null,
+  "ratings": {
+   "edge_retention": 4,
+   "toughness": 3,
+   "corrosion_resistance": 7,
+   "ease_of_sharpening": 6
+  },
+  "brands": [
+   "Boker",
+   "Puma",
+   "Randall",
+   "Schrade",
+   "Rough Ryder",
+   "Buck (older)"
+  ],
+  "price_tier": "Budget",
+  "notes": "Large primary chromium carbides limit toughness. Mn, Si, Ni listed as maximums.",
+  "search_volume": 1300
+ },
+ {
+  "id": "154cm",
+  "name": "154CM",
+  "short": "154CM",
+  "aliases": [
+   "154-CM"
+  ],
+  "manufacturer": "Crucible / Latrobe",
+  "country": "USA",
+  "category": "stainless",
+  "process": "ingot",
+  "composition": {
+   "C": 1.05,
+   "Cr": 14.0,
+   "Mo": 4.0,
+   "Mn": 0.5,
+   "Si": 0.3,
+   "P": 0.03,
+   "S": 0.03
+  },
+  "composition_confidence": "datasheet",
+  "hrc_min": 58,
+  "hrc_max": 61,
+  "hardness_note": null,
+  "ratings": {
+   "edge_retention": 5,
+   "toughness": 4,
+   "corrosion_resistance": 6,
+   "ease_of_sharpening": 6
+  },
+  "brands": [
+   "Benchmade (Griptilian, 940 older)",
+   "Emerson",
+   "Hogue",
+   "Kershaw (older)",
+   "Pro-Tech"
+  ],
+  "price_tier": "Mid-range",
+  "notes": "Originally developed for jet-engine bearings; ATS-34 is the Hitachi equivalent.",
+  "search_volume": 1300
+ },
+ {
+  "id": "nitro-v",
+  "name": "Nitro-V",
+  "short": "Nitro-V",
+  "aliases": [
+   "NitroV"
+  ],
+  "manufacturer": "Buderus Edelstahl (for New Jersey Steel Baron)",
+  "country": "Germany / USA",
+  "category": "stainless",
+  "process": "ingot",
+  "composition": {
+   "C": 0.68,
+   "Cr": 13.0,
+   "V": 0.08,
+   "N": 0.11,
+   "Mn": 0.65,
+   "Si": 0.45,
+   "P": 0.025,
+   "S": 0.015
+  },
+  "composition_confidence": "datasheet",
+  "hrc_min": 59,
+  "hrc_max": 62,
+  "hardness_note": null,
+  "ratings": {
+   "edge_retention": 3,
+   "toughness": 8,
+   "corrosion_resistance": 7,
+   "ease_of_sharpening": 9
+  },
+  "brands": [
+   "Civivi",
+   "Kizer",
+   "Bradford",
+   "Spyderco (select)",
+   "custom makers"
+  ],
+  "price_tier": "Mid-range",
+  "notes": "AEB-L with N and V additions for hardenability and grain refinement.",
+  "search_volume": 1900
+ },
+ {
+  "id": "elmax",
+  "name": "Elmax",
+  "short": "Elmax",
+  "aliases": [
+   "ELMAX",
+   "Uddeholm Elmax",
+   "Bohler-Uddeholm Elmax SuperClean"
+  ],
+  "manufacturer": "Uddeholm (voestalpine)",
+  "country": "Sweden",
+  "category": "stainless-pm",
+  "process": "PM",
+  "composition": {
+   "C": 1.7,
+   "Cr": 18.0,
+   "Mo": 1.0,
+   "V": 3.0,
+   "Mn": 0.3,
+   "Si": 0.8
+  },
+  "composition_confidence": "datasheet",
+  "hrc_min": 60,
+  "hrc_max": 62,
+  "hardness_note": null,
+  "ratings": {
+   "edge_retention": 7,
+   "toughness": 5,
+   "corrosion_resistance": 8,
+   "ease_of_sharpening": 4
+  },
+  "brands": [
+   "Zero Tolerance",
+   "Microtech",
+   "Lionsteel",
+   "Kizer",
+   "Shirogorov",
+   "Reate"
+  ],
+  "price_tier": "Premium",
+  "notes": null,
+  "search_volume": 1100
+ },
+ {
+  "id": "s90v",
+  "name": "CPM S90V",
+  "short": "S90V",
+  "aliases": [
+   "S90V",
+   "CPM 420V",
+   "420V"
+  ],
+  "manufacturer": "Crucible",
+  "country": "USA",
+  "category": "stainless-pm",
+  "process": "PM",
+  "composition": {
+   "C": 2.3,
+   "Cr": 14.0,
+   "Mo": 1.0,
+   "V": 9.0,
+   "Mn": 0.5,
+   "Si": 0.5,
+   "P": 0.03,
+   "S": 0.03
+  },
+  "composition_confidence": "datasheet",
+  "hrc_min": 59,
+  "hrc_max": 62,
+  "hardness_note": null,
+  "ratings": {
+   "edge_retention": 9,
+   "toughness": 3,
+   "corrosion_resistance": 7,
+   "ease_of_sharpening": 2
+  },
+  "brands": [
+   "Spyderco (sprints)",
+   "Benchmade (Bugout, Mini Adamas S90V)",
+   "Zero Tolerance",
+   "Lionsteel",
+   "Hinderer"
+  ],
+  "price_tier": "Premium",
+  "notes": null,
+  "search_volume": null
+ },
+ {
+  "id": "cruwear",
+  "name": "CPM CruWear",
+  "short": "CruWear",
+  "aliases": [
+   "CruWear",
+   "Cru-Wear",
+   "CPM-CruWear",
+   "PM CruWear"
+  ],
+  "manufacturer": "Crucible",
+  "country": "USA",
+  "category": "tool-pm",
+  "process": "PM",
+  "composition": {
+   "C": 1.1,
+   "Cr": 7.5,
+   "Mo": 1.6,
+   "W": 1.15,
+   "V": 2.4,
+   "Mn": 0.4,
+   "Si": 1.2,
+   "P": 0.03,
+   "S": 0.03
+  },
+  "composition_confidence": "datasheet",
+  "hrc_min": 60,
+  "hrc_max": 64,
+  "hardness_note": null,
+  "ratings": {
+   "edge_retention": 7,
+   "toughness": 7,
+   "corrosion_resistance": 3,
+   "ease_of_sharpening": 5
+  },
+  "brands": [
+   "Spyderco (Military, Manix 2, PM2 CruWear)",
+   "Benchmade (Bugout CruWear)",
+   "Hinderer",
+   "Zero Tolerance (0562CF)",
+   "Carothers (Delta 3V alt.)"
+  ],
+  "price_tier": "Premium",
+  "notes": "Descendant of Vasco Wear; Z-Wear (Zapp) is the same composition.",
+  "search_volume": null
+ },
+ {
+  "id": "3v",
+  "name": "CPM 3V",
+  "short": "CPM 3V",
+  "aliases": [
+   "3V",
+   "CPM-3V"
+  ],
+  "manufacturer": "Crucible",
+  "country": "USA",
+  "category": "tool-pm",
+  "process": "PM",
+  "composition": {
+   "C": 0.8,
+   "Cr": 7.5,
+   "Mo": 1.3,
+   "V": 2.75,
+   "Mn": 0.4,
+   "Si": 0.9,
+   "P": 0.03,
+   "S": 0.03
+  },
+  "composition_confidence": "datasheet",
+  "hrc_min": 58,
+  "hrc_max": 62,
+  "hardness_note": null,
+  "ratings": {
+   "edge_retention": 5,
+   "toughness": 9,
+   "corrosion_resistance": 3,
+   "ease_of_sharpening": 6
+  },
+  "brands": [
+   "Bark River",
+   "Carothers Performance Knives",
+   "Cold Steel (3V line)",
+   "Survive! Knives",
+   "Spyderco (Enuff 2, sprints)",
+   "Fehrman",
+   "Lionsteel"
+  ],
+  "price_tier": "Premium",
+  "notes": "The benchmark hard-use fixed-blade steel; toughness close to 5160 at 60 HRC.",
+  "search_volume": null
+ },
+ {
+  "id": "aeb-l",
+  "name": "AEB-L",
+  "short": "AEB-L",
+  "aliases": [
+   "Uddeholm AEB-L",
+   "Bohler-Uddeholm AEB-L"
+  ],
+  "manufacturer": "Uddeholm (voestalpine)",
+  "country": "Sweden",
+  "category": "stainless",
+  "process": "ingot",
+  "composition": {
+   "C": 0.67,
+   "Cr": 13.0,
+   "Mn": 0.6,
+   "Si": 0.4,
+   "P": 0.025,
+   "S": 0.015
+  },
+  "composition_confidence": "datasheet",
+  "hrc_min": 59,
+  "hrc_max": 62,
+  "hardness_note": null,
+  "ratings": {
+   "edge_retention": 3,
+   "toughness": 9,
+   "corrosion_resistance": 6,
+   "ease_of_sharpening": 9
+  },
+  "brands": [
+   "Custom makers",
+   "Lamson",
+   "Cut Brooklyn",
+   "Bradford",
+   "Warther",
+   "many US kitchen-knife makers"
+  ],
+  "price_tier": "Mid-range",
+  "notes": "Finest carbide structure of any common stainless; toughest stainless. Favorite of custom kitchen makers.",
+  "search_volume": null
+ },
+ {
+  "id": "80crv2",
+  "name": "80CrV2",
+  "short": "80CrV2",
+  "aliases": [
+   "1.2235",
+   "80CrV2",
+   "Swedish saw steel"
+  ],
+  "manufacturer": "Generic (DIN) / Buderus / Uddeholm",
+  "country": "Germany / Sweden",
+  "category": "carbon",
+  "process": "ingot",
+  "composition": {
+   "C": 0.8,
+   "Cr": 0.5,
+   "V": 0.2,
+   "Mn": 0.4,
+   "Si": 0.25,
+   "P": 0.025,
+   "S": 0.015
+  },
+  "composition_confidence": "standard",
+  "hrc_min": 57,
+  "hrc_max": 60,
+  "hardness_note": null,
+  "ratings": {
+   "edge_retention": 3,
+   "toughness": 8,
+   "corrosion_resistance": 1,
+   "ease_of_sharpening": 9
+  },
+  "brands": [
+   "Brisa / Enzo",
+   "Böker (Vox designs)",
+   "Hultafors (select)",
+   "Carbon Knife Co.",
+   "Winkler (select)",
+   "many custom makers"
+  ],
+  "price_tier": "Budget",
+  "notes": "Tough, easy-to-heat-treat 1084 alternative with Cr/V; common in European bushcraft knives.",
+  "search_volume": 1200
+ },
+ {
+  "id": "aus-8",
+  "name": "AUS-8",
+  "short": "AUS-8",
+  "aliases": [
+   "AUS8",
+   "8A",
+   "AUS-8A"
+  ],
+  "manufacturer": "Aichi Steel",
+  "country": "Japan",
+  "category": "stainless",
+  "process": "ingot",
+  "composition": {
+   "C": 0.75,
+   "Cr": 14.0,
+   "Mo": 0.2,
+   "V": 0.2,
+   "Mn": 0.5,
+   "Si": 1.0,
+   "Ni": 0.49,
+   "P": 0.04,
+   "S": 0.03
+  },
+  "composition_confidence": "datasheet",
+  "hrc_min": 57,
+  "hrc_max": 59,
+  "hardness_note": null,
+  "ratings": {
+   "edge_retention": 3,
+   "toughness": 6,
+   "corrosion_resistance": 7,
+   "ease_of_sharpening": 8
+  },
+  "brands": [
+   "Cold Steel",
+   "Ontario RAT",
+   "CRKT",
+   "SOG",
+   "Al Mar",
+   "Kizlyar Supreme"
+  ],
+  "price_tier": "Budget",
+  "notes": null,
+  "search_volume": null
+ },
+ {
+  "id": "n690",
+  "name": "N690",
+  "short": "N690",
+  "aliases": [
+   "N690Co",
+   "Bohler N690",
+   "X105CrCoMo18-2"
+  ],
+  "manufacturer": "voestalpine Bohler Edelstahl",
+  "country": "Austria",
+  "category": "stainless",
+  "process": "ingot",
+  "composition": {
+   "C": 1.07,
+   "Cr": 17.0,
+   "Mo": 1.1,
+   "V": 0.1,
+   "Co": 1.5,
+   "Mn": 0.4,
+   "Si": 0.4
+  },
+  "composition_confidence": "datasheet",
+  "hrc_min": 58,
+  "hrc_max": 60,
+  "hardness_note": null,
+  "ratings": {
+   "edge_retention": 5,
+   "toughness": 4,
+   "corrosion_resistance": 8,
+   "ease_of_sharpening": 6
+  },
+  "brands": [
+   "Fox Knives",
+   "Lionsteel",
+   "Boker",
+   "Extrema Ratio",
+   "Spyderco (select)",
+   "Viper",
+   "Bastinelli"
+  ],
+  "price_tier": "Mid-range",
+  "notes": "European VG-10/440C class steel; staple of Italian knives.",
+  "search_volume": null
+ },
+ {
+  "id": "cts-xhp",
+  "name": "CTS-XHP",
+  "short": "CTS-XHP",
+  "aliases": [
+   "XHP",
+   "Carpenter CTS XHP"
+  ],
+  "manufacturer": "Carpenter Technology",
+  "country": "USA",
+  "category": "stainless-pm",
+  "process": "PM",
+  "composition": {
+   "C": 1.6,
+   "Cr": 16.0,
+   "Mo": 0.8,
+   "V": 0.45,
+   "Ni": 0.35,
+   "Mn": 0.5,
+   "Si": 0.4,
+   "P": 0.03,
+   "S": 0.03
+  },
+  "composition_confidence": "datasheet",
+  "hrc_min": 60,
+  "hrc_max": 63,
+  "hardness_note": null,
+  "ratings": {
+   "edge_retention": 6,
+   "toughness": 4,
+   "corrosion_resistance": 7,
+   "ease_of_sharpening": 5
+  },
+  "brands": [
+   "Cold Steel (2012-2016)",
+   "Spyderco (Techno, Slysz Bowie)",
+   "Zero Tolerance (select)"
+  ],
+  "price_tier": "Premium",
+  "notes": "Described as 'stainless D2'; behaves like PM 440C at higher hardness.",
+  "search_volume": null
+ },
+ {
+  "id": "m4",
+  "name": "CPM M4",
+  "short": "CPM M4",
+  "aliases": [
+   "M4",
+   "CPM-M4",
+   "CPM REX M4"
+  ],
+  "manufacturer": "Crucible",
+  "country": "USA",
+  "category": "high-speed-pm",
+  "process": "PM",
+  "composition": {
+   "C": 1.42,
+   "Cr": 4.0,
+   "Mo": 5.25,
+   "W": 5.5,
+   "V": 4.0,
+   "Mn": 0.3,
+   "Si": 0.55,
+   "S": 0.06
+  },
+  "composition_confidence": "datasheet",
+  "hrc_min": 62,
+  "hrc_max": 65,
+  "hardness_note": null,
+  "ratings": {
+   "edge_retention": 8,
+   "toughness": 5,
+   "corrosion_resistance": 2,
+   "ease_of_sharpening": 3
+  },
+  "brands": [
+   "Spyderco (Gayle Bradley, Manix 2 M4)",
+   "Benchmade (Contego, 940-1)",
+   "Zero Tolerance",
+   "Kershaw (Blur M4)"
+  ],
+  "price_tier": "Premium",
+  "notes": "Popular competition-cutting steel; excellent toughness for its wear resistance.",
+  "search_volume": null
+ },
+ {
+  "id": "lc200n",
+  "name": "LC200N",
+  "short": "LC200N",
+  "aliases": [
+   "Cronidur 30",
+   "Z-FiNit",
+   "X30CrMoN15-1",
+   "1.4108"
+  ],
+  "manufacturer": "Zapp (Cronidur 30 licensed from Energietechnik Essen)",
+  "country": "Germany",
+  "category": "stainless",
+  "process": "pressurized electroslag remelted (PESR)",
+  "composition": {
+   "C": 0.3,
+   "Cr": 15.0,
+   "Mo": 0.95,
+   "N": 0.4,
+   "Mn": 1.0,
+   "Si": 0.5
+  },
+  "composition_confidence": "datasheet",
+  "hrc_min": 57,
+  "hrc_max": 60,
+  "hardness_note": null,
+  "ratings": {
+   "edge_retention": 3,
+   "toughness": 8,
+   "corrosion_resistance": 10,
+   "ease_of_sharpening": 8
+  },
+  "brands": [
+   "Spyderco Salt series",
+   "Spyderco Native 5 Salt",
+   "Lionsteel (select)",
+   "custom makers"
+  ],
+  "price_tier": "Premium",
+  "notes": "Nitrogen replaces most carbon; aerospace bearing steel. Essentially immune to salt-water corrosion.",
+  "search_volume": null
+ },
+ {
+  "id": "420hc",
+  "name": "420HC",
+  "short": "420HC",
+  "aliases": [
+   "420 High Carbon",
+   "Latrobe 420HC"
+  ],
+  "manufacturer": "Latrobe / various (generic)",
+  "country": "USA",
+  "category": "stainless",
+  "process": "ingot",
+  "composition": {
+   "C": 0.46,
+   "Cr": 13.0,
+   "V": 0.3,
+   "Mn": 0.4,
+   "Si": 0.4,
+   "Ni": 0.5,
+   "P": 0.04,
+   "S": 0.03
+  },
+  "composition_confidence": "datasheet",
+  "hrc_min": 56,
+  "hrc_max": 58,
+  "hardness_note": null,
+  "ratings": {
+   "edge_retention": 2,
+   "toughness": 7,
+   "corrosion_resistance": 7,
+   "ease_of_sharpening": 9
+  },
+  "brands": [
+   "Buck",
+   "Case",
+   "Gerber",
+   "Leatherman",
+   "Kershaw"
+  ],
+  "price_tier": "Budget",
+  "notes": "Buck's Paul Bos heat treat gets the most out of it. Fine-grained, very easy to sharpen.",
+  "search_volume": 1100
+ },
+ {
+  "id": "zdp-189",
+  "name": "ZDP-189",
+  "short": "ZDP-189",
+  "aliases": [
+   "ZDP189"
+  ],
+  "manufacturer": "Hitachi Metals (Proterial)",
+  "country": "Japan",
+  "category": "stainless-pm",
+  "process": "PM",
+  "composition": {
+   "C": 3.0,
+   "Cr": 20.0,
+   "Mo": 1.4,
+   "W": 0.6,
+   "V": 0.1,
+   "Mn": 0.5,
+   "Si": 0.35
+  },
+  "composition_confidence": "datasheet",
+  "hrc_min": 64,
+  "hrc_max": 67,
+  "hardness_note": null,
+  "ratings": {
+   "edge_retention": 9,
+   "toughness": 2,
+   "corrosion_resistance": 5,
+   "ease_of_sharpening": 2
+  },
+  "brands": [
+   "Spyderco (Endura/Delica ZDP sprints, Caly 3)",
+   "Rockstead",
+   "William Henry",
+   "Kershaw (Shallot ZDP)"
+  ],
+  "price_tier": "Ultra-premium",
+  "notes": "Most Cr tied up in carbides, so only moderately stainless despite 20% Cr. Usually laminated.",
+  "search_volume": null
+ },
+ {
+  "id": "hap40",
+  "name": "HAP40",
+  "short": "HAP40",
+  "aliases": [
+   "HAP-40",
+   "Hitachi HAP40"
+  ],
+  "manufacturer": "Hitachi Metals (Proterial)",
+  "country": "Japan",
+  "category": "high-speed-pm",
+  "process": "PM",
+  "composition": {
+   "C": 1.3,
+   "Cr": 4.0,
+   "Mo": 5.0,
+   "W": 6.0,
+   "V": 3.0,
+   "Co": 8.0,
+   "Mn": 0.4,
+   "Si": 0.4
+  },
+  "composition_confidence": "datasheet",
+  "hrc_min": 64,
+  "hrc_max": 67,
+  "hardness_note": null,
+  "ratings": {
+   "edge_retention": 8,
+   "toughness": 4,
+   "corrosion_resistance": 2,
+   "ease_of_sharpening": 3
+  },
+  "brands": [
+   "Sukenari",
+   "Yu Kurosaki",
+   "Takamura (HSPS Pro)",
+   "Hatsukokoro",
+   "Kei Kobayashi"
+  ],
+  "price_tier": "Premium",
+  "notes": "Japanese equivalent of REX 45; usually stainless-clad in kitchen knives.",
+  "search_volume": null
+ },
+ {
+  "id": "sg2",
+  "name": "SG2 / R2",
+  "short": "SG2 (R2)",
+  "aliases": [
+   "SG2",
+   "R2",
+   "SPG2",
+   "Super Gold 2"
+  ],
+  "manufacturer": "Takefu Special Steel (SG2) / Kobelco (R2)",
+  "country": "Japan",
+  "category": "stainless-pm",
+  "process": "PM",
+  "composition": {
+   "C": 1.4,
+   "Cr": 15.0,
+   "Mo": 2.8,
+   "V": 2.0,
+   "Mn": 0.4,
+   "Si": 0.5,
+   "P": 0.03,
+   "S": 0.03
+  },
+  "composition_confidence": "datasheet",
+  "hrc_min": 62,
+  "hrc_max": 64,
+  "hardness_note": null,
+  "ratings": {
+   "edge_retention": 7,
+   "toughness": 4,
+   "corrosion_resistance": 7,
+   "ease_of_sharpening": 4
+  },
+  "brands": [
+   "Shun (Kaji, Fuji)",
+   "Miyabi (Birchwood, Black)",
+   "Takamura",
+   "Tojiro (Flash)",
+   "Hatsukokoro",
+   "Yaxell (Zen, Super Gou)"
+  ],
+  "price_tier": "Premium",
+  "notes": "The dominant PM stainless in Japanese kitchen knives.",
+  "search_volume": null
+ },
+ {
+  "id": "shirogami-2",
+  "name": "Shirogami #2",
+  "short": "Shirogami #2",
+  "aliases": [
+   "White #2",
+   "White Paper 2",
+   "Shirogami 2"
+  ],
+  "manufacturer": "Hitachi Metals (Proterial) Yasugi",
+  "country": "Japan",
+  "category": "carbon",
+  "process": "ingot",
+  "composition": {
+   "C": 1.1,
+   "Mn": 0.3,
+   "Si": 0.2,
+   "P": 0.025,
+   "S": 0.004
+  },
+  "composition_confidence": "datasheet",
+  "hrc_min": 61,
+  "hrc_max": 64,
+  "hardness_note": null,
+  "ratings": {
+   "edge_retention": 4,
+   "toughness": 6,
+   "corrosion_resistance": 1,
+   "ease_of_sharpening": 10
+  },
+  "brands": [
+   "Tojiro (Shirogami)",
+   "Masakage",
+   "Moritaka",
+   "Yoshihiro",
+   "Tanaka",
+   "Shibata"
+  ],
+  "price_tier": "Mid-range",
+  "notes": "Most common Japanese kitchen carbon steel.",
+  "search_volume": null
+ }
+]

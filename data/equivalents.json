@@ -1,0 +1,169 @@
+[
+ {
+  "group": "M390 class",
+  "members": [
+   "M390",
+   "CPM 20CV",
+   "CTS-204P"
+  ],
+  "in_scope": [
+   "m390",
+   "20cv"
+  ],
+  "confidence": "identical"
+ },
+ {
+  "group": "154CM class",
+  "members": [
+   "154CM",
+   "ATS-34",
+   "CPM 154",
+   "RWL34"
+  ],
+  "in_scope": [
+   "154cm"
+  ],
+  "confidence": "similar"
+ },
+ {
+  "group": "440C class",
+  "members": [
+   "440C",
+   "N695",
+   "9Cr18MoV",
+   "CTS-40CP",
+   "1.4125"
+  ],
+  "in_scope": [
+   "440c"
+  ],
+  "confidence": "similar"
+ },
+ {
+  "group": "AUS-8 class",
+  "members": [
+   "AUS-8",
+   "8Cr13MoV",
+   "8Cr14MoV",
+   "CTS-BD1"
+  ],
+  "in_scope": [
+   "aus-8",
+   "8cr13mov"
+  ],
+  "confidence": "similar"
+ },
+ {
+  "group": "VG-10 class",
+  "members": [
+   "VG-10",
+   "10Cr15CoMoV",
+   "N690",
+   "VG-MAX",
+   "ZA-18"
+  ],
+  "in_scope": [
+   "vg-10",
+   "n690"
+  ],
+  "confidence": "similar"
+ },
+ {
+  "group": "AEB-L class",
+  "members": [
+   "AEB-L",
+   "13C26",
+   "14C28N",
+   "Nitro-V",
+   "12C27"
+  ],
+  "in_scope": [
+   "aeb-l",
+   "14c28n",
+   "nitro-v"
+  ],
+  "confidence": "similar"
+ },
+ {
+  "group": "D2 class",
+  "members": [
+   "D2",
+   "K110",
+   "SLD",
+   "CPM D2"
+  ],
+  "in_scope": [
+   "d2"
+  ],
+  "confidence": "similar"
+ },
+ {
+  "group": "CruWear class",
+  "members": [
+   "CPM CruWear",
+   "Z-Wear"
+  ],
+  "in_scope": [
+   "cruwear"
+  ],
+  "confidence": "similar"
+ },
+ {
+  "group": "REX 45 class",
+  "members": [
+   "CPM REX 45",
+   "HAP40"
+  ],
+  "in_scope": [
+   "hap40"
+  ],
+  "confidence": "similar"
+ },
+ {
+  "group": "XHP class",
+  "members": [
+   "CTS-XHP",
+   "440XH"
+  ],
+  "in_scope": [
+   "cts-xhp"
+  ],
+  "confidence": "similar"
+ },
+ {
+  "group": "ZDP-189 class",
+  "members": [
+   "ZDP-189",
+   "Cowry-X"
+  ],
+  "in_scope": [
+   "zdp-189"
+  ],
+  "confidence": "similar"
+ },
+ {
+  "group": "1084 class",
+  "members": [
+   "1084",
+   "1080",
+   "SK-5",
+   "80CrV2"
+  ],
+  "in_scope": [
+   "80crv2"
+  ],
+  "confidence": "similar"
+ },
+ {
+  "group": "LC200N",
+  "members": [
+   "LC200N",
+   "Cronidur 30",
+   "Z-FiNit"
+  ],
+  "in_scope": [
+   "lc200n"
+  ],
+  "confidence": "similar"
+ }
+]

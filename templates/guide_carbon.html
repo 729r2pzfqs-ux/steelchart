@@ -1,0 +1,25 @@
+{% extends "guide_base.html" %}
+{% block article %}
+<h2>What makes a steel stainless</h2>
+<p>Steel becomes stainless when there is enough chromium dissolved in it, roughly 12% or more, to form a thin, self-repairing chromium oxide film on the surface. Chromium that ends up locked in carbides does not help, which is why D2 with about 12% chromium is only semi-stainless. Carbon steels have little or no chromium, so iron oxide (rust) forms whenever the blade stays wet.</p>
+<h2>The numbers</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Average rating (1-10)</th><th>Carbon steels ({{ carbon|length }})</th><th>Stainless steels ({{ stainless|length }})</th></tr></thead>
+<tbody>{% for k in rating_keys %}<tr><th>{{ rating_names[k] }}</th><td class="num">{{ avg(carbon, k) }}</td><td class="num">{{ avg(stainless, k) }}</td></tr>{% endfor %}</tbody>
+</table></div>
+<p>Stainless here includes both conventional and powder stainless steels. Carbon steels: {% for s in carbon %}<a href="/steel/{{ s.id }}/">{{ s.short }}</a>{% if not loop.last %}, {% endif %}{% endfor %}.</p>
+<h2>Why choose carbon steel</h2>
+<ul>
+<li><strong>Sharpening:</strong> simple carbon steels take a very keen edge quickly on any stone.</li>
+<li><strong>Toughness for the price:</strong> spring and tool grades such as 80CrV2 and 1095 handle chopping well.</li>
+<li><strong>Patina:</strong> a grey-blue oxide layer forms with use and slows further rust. Many kitchen-knife and bushcraft users like it.</li>
+</ul>
+<h2>Why choose stainless</h2>
+<ul>
+<li><strong>Low maintenance:</strong> it tolerates sweat, humidity, food acids and dishwater far better.</li>
+<li><strong>Edge retention:</strong> powder stainless steels such as M390 and S90V hold an edge far longer than simple carbon steels.</li>
+<li><strong>Modern balance:</strong> steels such as MagnaCut, AEB-L and 14C28N now match many carbon steels for toughness while staying rust-resistant.</li>
+</ul>
+<h2>Head-to-head comparisons</h2>
+<ul class="pill-list"><li><a href="/compare/1095-vs-d2/">1095 vs D2</a></li><li><a href="/compare/1095-vs-80crv2/">1095 vs 80CrV2</a></li><li><a href="/compare/14c28n-vs-d2/">14C28N vs D2</a></li><li><a href="/compare/sg2-vs-vg-10/">SG2 vs VG-10</a></li></ul>
+{% endblock %}

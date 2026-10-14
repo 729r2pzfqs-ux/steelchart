@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block body %}
+<h1>Knife steel chart</h1>
+<p class="lede">{{ rows|length }} knife steels with their key alloying elements, typical hardness and 1-10 performance ratings. Click a column to sort; tap a steel for the full page.</p>
+<div class="filter-row"><label>Filter <input type="search" class="table-filter" data-table="steelchart" placeholder="Type to filter…"></label>
+<select class="table-cat" data-table="steelchart" aria-label="Steel type"><option value="">All types</option>{% for c in cats %}<option value="{{ c.name }}">{{ c.name }}</option>{% endfor %}</select></div>
+<div class="table-wrap"><table class="sortable" id="steelchart">
+<thead><tr><th>Steel</th><th>Type</th><th data-sort="num">C %</th><th data-sort="num">Cr %</th><th data-sort="num">V %</th><th data-sort="num">Mo %</th><th data-sort="num">HRC</th><th data-sort="num" title="Edge retention">Edge</th><th data-sort="num" title="Toughness">Tough</th><th data-sort="num" title="Corrosion resistance">Corr.</th><th data-sort="num" title="Ease of sharpening">Sharp.</th><th data-sort="num">Avg</th><th>Tier</th></tr></thead>
+<tbody>
+{% for s in rows %}<tr><td><a href="/steel/{{ s.id }}/">{{ s.short }}</a></td><td>{{ cat_by_id[s.category].name }}</td>
+{% for el in ["C", "Cr", "V", "Mo"] %}<td class="num" data-v="{{ s.composition[el] or 0 }}">{{ s.composition[el]|fmt }}</td>{% endfor %}
+<td data-v="{{ s.hrc_max }}">{{ s.hrc_min }}–{{ s.hrc_max }}</td>
+{% for k in rating_keys %}<td class="num r{{ s.ratings[k] }}" data-v="{{ s.ratings[k] }}">{{ s.ratings[k] }}</td>{% endfor %}
+<td class="num" data-v="{{ s.avg }}">{{ s.avg }}</td><td>{{ s.price_tier }}</td></tr>
+{% endfor %}
+</tbody></table></div>
+<p class="small muted">Ratings are relative to the whole population of knife steels (1 = worst, 10 = best) at typical knife hardness. Compositions are nominal weight percent from manufacturer datasheets or standards. See the <a href="/about/">methodology</a>.</p>
+<h2>Edge retention vs toughness</h2>
+<div class="chart-box">{{ svg.scatter(rows, "Knife steels: edge retention vs toughness") }}</div>
+<ul class="legend">{% for c in cats %}<li><i class="sw cat-{{ c.id }}"></i><a href="/category/{{ c.id }}/">{{ c.name }}</a></li>{% endfor %}</ul>
+{{ ad("inline") }}
+<h2>Popular comparisons</h2>
+<ul class="pill-list">{% for c in top_comps %}<li><a href="/compare/{{ c.id }}/">{{ c.title }}</a></li>{% endfor %}</ul>
+{% endblock %}

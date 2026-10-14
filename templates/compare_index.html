@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block body %}
+<h1>Knife steel comparisons</h1>
+<p class="lede">{{ comps|length }} head-to-head comparisons, most-searched first. Each page has the composition side by side, overlaid ratings and a verdict.</p>
+<div class="filter-row"><label>Filter <input type="search" class="table-filter" data-table="comptable" placeholder="Type a steel…"></label></div>
+<div class="table-wrap"><table class="sortable" id="comptable">
+<thead><tr><th>Comparison</th><th data-sort="num">Edge</th><th data-sort="num">Toughness</th><th data-sort="num">Corrosion</th><th data-sort="num">Sharpening</th></tr></thead>
+<tbody>{% for c in comps %}<tr><td><a href="/compare/{{ c.id }}/">{{ c.title }}</a></td>{% for k in rating_keys %}<td class="num" data-v="{{ c.a.ratings[k] - c.b.ratings[k] }}">{{ c.a.ratings[k] }} – {{ c.b.ratings[k] }}</td>{% endfor %}</tr>{% endfor %}</tbody>
+</table></div>
+<p class="small muted">Numbers are the first steel's rating – the second steel's rating (1-10).</p>
+{% endblock %}

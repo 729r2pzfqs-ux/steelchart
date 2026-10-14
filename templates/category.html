@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% from "macros.html" import steel_table, comp_list %}
+{% block body %}
+<h1>{{ cat.name }} for knives</h1>
+<p class="answer">{{ cat.description }}</p>
+{{ steel_table(cat.steels) }}
+<h2>Edge retention vs toughness</h2>
+<div class="chart-box">{{ svg.scatter(cat.steels, cat.name ~ ": edge retention vs toughness") }}</div>
+{% if cat.comparisons %}<h2>Comparisons with {{ cat.name|lower }}</h2>{{ comp_list(cat.comparisons) }}{% endif %}
+<h2>Other steel types</h2>
+<ul class="pill-list">{% for c in cats if c.id != cat.id %}<li><a href="/category/{{ c.id }}/">{{ c.name }}</a></li>{% endfor %}</ul>
+{% endblock %}

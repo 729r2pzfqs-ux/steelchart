@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ title }}</title>
+<meta name="description" content="{{ description }}">
+<link rel="canonical" href="{{ site_url }}{{ path }}">
+<meta property="og:title" content="{{ title }}">
+<meta property="og:description" content="{{ description }}">
+<meta property="og:url" content="{{ site_url }}{{ path }}">
+<meta property="og:type" content="{{ og_type or 'website' }}">
+<meta property="og:site_name" content="{{ site_name }}">
+<meta property="og:image" content="{{ site_url }}/favicon-512.png">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#1b2230">
+<link rel="stylesheet" href="/static/style.css?v=1">
+<script>
+(function(){try{var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('consent', 'default', {
+  'analytics_storage': 'denied', 'ad_storage': 'denied', 'ad_user_data': 'denied', 'ad_personalization': 'denied',
+  'wait_for_update': 500,
+  'region': ['AT','BE','BG','HR','CY','CZ','DK','EE','FI','FR','DE','GR','HU','IS','IE','IT','LV','LI','LT','LU','MT','NL','NO','PL','PT','RO','SK','SI','ES','SE','CH','GB']
+});
+gtag('consent', 'default', {'analytics_storage': 'granted', 'ad_storage': 'granted', 'ad_user_data': 'granted', 'ad_personalization': 'granted'});
+</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={{ adsense_pub }}" crossorigin="anonymous"></script>
+{% if ga_id %}<script async src="https://www.googletagmanager.com/gtag/js?id={{ ga_id }}"></script>
+<script>gtag('js', new Date()); gtag('config', '{{ ga_id }}');</script>
+{% endif %}
+{% for ld in jsonld %}<script type="application/ld+json">{{ ld|tojson }}</script>
+{% endfor %}
+</head>
+<body>
+<header class="site-header">
+<div class="wrap header-inner">
+<a href="/" class="logo">Steel<span>Chart</span></a>
+<nav class="nav" aria-label="Main">
+<a href="/chart/">Chart</a><a href="/steel/">Steels</a><a href="/compare/">Compare</a><a href="/knife/">Knives</a><a href="/guide/">Guides</a>
+</nav>
+<div class="header-tools">
+<form class="search" role="search" onsubmit="return false">
+<input type="search" class="search-input" placeholder="Search steels, knives…" aria-label="Search steels and knives" autocomplete="off">
+<div class="search-results" hidden></div>
+</form>
+<button type="button" class="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M12 3a9 9 0 1 0 9 9 7 7 0 0 1-9-9z" fill="currentColor"/></svg></button>
+</div>
+</div>
+</header>
+<main id="main" class="wrap">
+{% if crumbs %}<nav class="crumbs" aria-label="Breadcrumb">{% for href, label in crumbs %}{% if not loop.last %}<a href="{{ href }}">{{ label }}</a><span aria-hidden="true"> › </span>{% else %}<span aria-current="page">{{ label }}</span>{% endif %}{% endfor %}</nav>{% endif %}
+{% block body %}{% endblock %}
+</main>
+<footer class="site-footer">
+<div class="wrap">
+<div class="footer-grid">
+<div><h4>Steels</h4>{% for c in cats %}<a href="/category/{{ c.id }}/">{{ c.name }}</a>{% endfor %}<a href="/chart/">Steel chart</a></div>
+<div><h4>Popular comparisons</h4>{% for c in top_comps %}<a href="/compare/{{ c.id }}/">{{ c.title }}</a>{% endfor %}</div>
+<div><h4>Site</h4><a href="/about/">About &amp; methodology</a><a href="/guide/">Guides</a><a href="/brand/">Brands</a><a href="/affiliate-disclosure/">Affiliate disclosure</a><a href="/privacy/">Privacy policy</a><a href="/terms/">Terms of use</a><a href="mailto:{{ email }}">Contact</a></div>
+</div>
+<p class="fine">Steel ratings are relative 1-10 scores across knife steels, compiled from manufacturer datasheets and published test data; see <a href="/about/">methodology</a>. Some links are affiliate links: we may earn a commission on purchases at no extra cost to you. &copy; {{ year_now }} SteelChart.org · <a href="mailto:{{ email }}">{{ email }}</a></p>
+</div>
+</footer>
+<script src="/static/site.js?v=1" defer></script>
+</body>
+</html>

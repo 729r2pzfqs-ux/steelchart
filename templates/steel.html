@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% from "macros.html" import rating_bars, knife_table, disclosure, comp_list, faq_block, steel_card %}
+{% block body %}
+<h1>{{ s.name }} steel</h1>
+<p class="answer">{{ answer }}</p>
+<div class="grid2">
+<section class="panel">
+<h2 class="h-sm">At a glance</h2>
+{{ rating_bars(s) }}
+<dl class="facts">
+<dt>Type</dt><dd><a href="/category/{{ cat.id }}/">{{ cat.name }}</a></dd>
+<dt>Hardness</dt><dd>{{ s.hrc_min }}–{{ s.hrc_max }} HRC</dd>
+<dt>Maker</dt><dd>{{ s.manufacturer }}{% if s.country %} ({{ s.country }}){% endif %}</dd>
+<dt>Process</dt><dd>{{ s.process }}</dd>
+<dt>Price tier</dt><dd>{{ s.price_tier }}</dd>
+{% if s.aliases %}<dt>Also called</dt><dd>{{ s.aliases|join(", ") }}</dd>{% endif %}
+</dl>
+</section>
+<section class="panel chart-box">{{ svg.radar([(s.short, s.ratings, "--c-a")], s.name ~ " performance ratings") }}</section>
+</div>
+<div class="chart-box">{{ svg.hrc_gauge([(s.short, s.hrc_min, s.hrc_max, "--c-a")], s.name ~ " typical hardness range") }}</div>
+
+<h2>Composition</h2>
+<div class="grid2">
+<div class="table-wrap"><table class="comp-table">
+<thead><tr><th>Element</th><th>Weight %</th></tr></thead>
+<tbody>{% for el in elements if s.composition[el] %}<tr><td>{{ element_names[el] }} ({{ el }})</td><td class="num">{{ s.composition[el]|fmt }}</td></tr>{% endfor %}</tbody>
+</table></div>
+<div class="chart-box">{{ svg.composition([(s.short, s.composition, "--c-a")], s.name ~ " composition by weight percent") }}</div>
+</div>
+<p class="small muted">Source: {% if s.composition_confidence == "datasheet" %}manufacturer datasheet{% elif s.composition_confidence == "standard" %}published standard (AISI/DIN/JIS/GB){% else %}approximate; the maker has not published a full specification{% endif %}. Nominal values; where a range is published, the midpoint is shown. Phosphorus and sulfur, where listed, are maximums.</p>
+
+<h2>What makes {{ s.short }} behave the way it does</h2>
+{% for p in chemistry %}<p>{{ p }}</p>{% endfor %}
+
+{% if s.equivalents %}
+<h2>Equivalent and similar steels</h2>
+<ul>{% for g in s.equivalents %}<li><strong>{{ g.group }}</strong>{% if g.confidence == "identical" %} (same nominal composition from different mills){% else %} (similar class; compositions differ){% endif %}: {% for m in g.members %}{% if m in steel_id_by_name and steel_id_by_name[m] != s.id %}<a href="/steel/{{ steel_id_by_name[m] }}/">{{ m }}</a>{% else %}{{ m }}{% endif %}{% if not loop.last %}, {% endif %}{% endfor %}</li>{% endfor %}</ul>
+{% endif %}
+
+<h2>Knives in {{ s.short }}</h2>
+{% if s.knives %}{{ knife_table(s.knives, False) }}{{ disclosure() }}{% else %}<p class="muted">No knife in our current database uses {{ s.short }}.{% if s.brands %} Brands known to use it include {{ s.brands|join(", ") }}.{% endif %}</p>{% endif %}
+<p><a class="btn" href="{{ bladehq(s.short ~ ' knife') }}" rel="nofollow sponsored noopener" target="_blank">Shop {{ s.short }} knives at Blade HQ</a></p>
+{{ ad("inline") }}
+
+<h2>How to sharpen {{ s.short }}</h2>
+<p>{{ sharpen }}</p>
+
+{% if s.comparisons %}<h2>Compare {{ s.short }} with</h2>{{ comp_list(s.comparisons) }}{% endif %}
+
+{{ faq_block(faq) }}
+
+<h2>More {{ cat.name|lower }}</h2>
+<div class="cards">{% for x in related %}{{ steel_card(x) }}{% endfor %}</div>
+<p><a href="/chart/">See every steel in the chart</a></p>
+{% endblock %}

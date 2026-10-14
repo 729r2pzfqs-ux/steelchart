@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% from "macros.html" import steel_card %}
+{% block body %}
+<h1>Knife steels A-Z</h1>
+<p class="lede">Every steel on SteelChart, grouped by type. For a sortable side-by-side view, use the <a href="/chart/">steel chart</a>.</p>
+{% for c, ss in groups %}
+<h2><a href="/category/{{ c.id }}/">{{ c.name }}</a></h2>
+<p class="muted">{{ c.description }}</p>
+<div class="cards">{% for s in ss|sort(attribute="short") %}{{ steel_card(s) }}{% endfor %}</div>
+{% endfor %}
+{% endblock %}

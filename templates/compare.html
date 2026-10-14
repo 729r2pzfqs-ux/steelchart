@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% from "macros.html" import knife_table, disclosure, comp_list, faq_block %}
+{% block body %}
+<h1>{{ a.short }} vs {{ b.short }}</h1>
+<p class="answer">{{ verdict }} {{ choose|join(" ") }}</p>
+<div class="grid2">
+<section class="panel chart-box">{{ svg.radar([(a.short, a.ratings, "--c-a"), (b.short, b.ratings, "--c-b")], a.short ~ " vs " ~ b.short ~ " ratings") }}</section>
+<section class="panel chart-box"><h2 class="h-sm">Who wins each property</h2>{{ svg.diff_chart(a.short, a.ratings, b.short, b.ratings) }}</section>
+</div>
+
+<h2>Side by side</h2>
+<div class="table-wrap"><table class="vs-table">
+<thead><tr><th></th><th><a href="/steel/{{ a.id }}/" class="ca">{{ a.short }}</a></th><th><a href="/steel/{{ b.id }}/" class="cb">{{ b.short }}</a></th></tr></thead>
+<tbody>
+<tr><th>Type</th><td><a href="/category/{{ a.category }}/">{{ cat_by_id[a.category].name }}</a></td><td><a href="/category/{{ b.category }}/">{{ cat_by_id[b.category].name }}</a></td></tr>
+<tr><th>Hardness</th><td>{{ a.hrc_min }}–{{ a.hrc_max }} HRC</td><td>{{ b.hrc_min }}–{{ b.hrc_max }} HRC</td></tr>
+{% for k in rating_keys %}<tr><th>{{ rating_names[k] }}</th><td{% if a.ratings[k] > b.ratings[k] %} class="win"{% endif %}>{{ a.ratings[k] }}/10</td><td{% if b.ratings[k] > a.ratings[k] %} class="win"{% endif %}>{{ b.ratings[k] }}/10</td></tr>{% endfor %}
+<tr><th>Price tier</th><td>{{ a.price_tier }}</td><td>{{ b.price_tier }}</td></tr>
+<tr><th>Maker</th><td>{{ a.manufacturer }}</td><td>{{ b.manufacturer }}</td></tr>
+</tbody></table></div>
+<div class="chart-box">{{ svg.hrc_gauge([(a.short, a.hrc_min, a.hrc_max, "--c-a"), (b.short, b.hrc_min, b.hrc_max, "--c-b")], a.short ~ " vs " ~ b.short ~ " hardness") }}</div>
+
+<h2>Composition</h2>
+<div class="grid2">
+<div class="table-wrap"><table class="comp-table">
+<thead><tr><th>Element</th><th>{{ a.short }}</th><th>{{ b.short }}</th></tr></thead>
+<tbody>{% for el in elements if a.composition[el] or b.composition[el] %}<tr><td>{{ element_names[el] }} ({{ el }})</td><td class="num">{{ a.composition.get(el)|fmt }}</td><td class="num">{{ b.composition.get(el)|fmt }}</td></tr>{% endfor %}</tbody>
+</table></div>
+<div class="chart-box">{{ svg.composition([(a.short, a.composition, "--c-a"), (b.short, b.composition, "--c-b")], a.short ~ " vs " ~ b.short ~ " composition") }}</div>
+</div>
+
+<h2>Property by property</h2>
+{% for p in breakdown %}<h3>{{ p.name }}</h3><p>{{ p.text }}</p>{% endfor %}
+
+<h2>Knives in each steel</h2>
+<h3>{{ a.short }}</h3>
+{% if a.knives %}{{ knife_table(a.knives, False) }}{% else %}<p class="muted">No {{ a.short }} knife in our database yet.</p>{% endif %}
+<h3>{{ b.short }}</h3>
+{% if b.knives %}{{ knife_table(b.knives, False) }}{% else %}<p class="muted">No {{ b.short }} knife in our database yet.</p>{% endif %}
+<p class="cta-row"><a class="btn" href="{{ bladehq(a.short ~ ' knife') }}" rel="nofollow sponsored noopener" target="_blank">Shop {{ a.short }} knives</a> <a class="btn" href="{{ bladehq(b.short ~ ' knife') }}" rel="nofollow sponsored noopener" target="_blank">Shop {{ b.short }} knives</a></p>
+{{ disclosure() }}
+
+{{ faq_block(faq) }}
+
+{% if related %}<h2>Related comparisons</h2>{{ comp_list(related) }}{% endif %}
+<p>Full steel pages: <a href="/steel/{{ a.id }}/">{{ a.name }}</a> · <a href="/steel/{{ b.id }}/">{{ b.name }}</a></p>
+{% endblock %}

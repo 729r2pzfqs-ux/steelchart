@@ -1,0 +1,6 @@
+{% extends "base.html" %}
+{% block body %}
+<h1>Knife brands</h1>
+<p class="lede">Brands in our knife database and the steels their popular models use.</p>
+<div class="cards">{% for b in brands %}<a class="card" href="/brand/{{ b.id }}/"><span class="card-title">{{ b.name }}</span><span class="card-meta">{{ b.knives|length }} knife{{ "s" if b.knives|length != 1 }} · {{ b.steels|map(attribute="short")|join(", ") }}</span><span class="card-text">{{ b.description }}</span></a>{% endfor %}</div>
+{% endblock %}

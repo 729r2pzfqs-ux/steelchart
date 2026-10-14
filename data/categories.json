@@ -1,0 +1,32 @@
+[
+ {
+  "id": "stainless",
+  "name": "Stainless steels",
+  "description": "Conventional (ingot) stainless steels with enough free chromium, roughly 12% or more, to resist rust in everyday use."
+ },
+ {
+  "id": "stainless-pm",
+  "name": "Powder metallurgy stainless steels",
+  "description": "Stainless steels made by powder metallurgy, which keeps carbides small and evenly spread so high-alloy steels stay tough enough for knives."
+ },
+ {
+  "id": "tool",
+  "name": "Tool steels",
+  "description": "Ingot tool steels designed for dies and cutting tools; high wear resistance, limited corrosion resistance."
+ },
+ {
+  "id": "tool-pm",
+  "name": "Powder metallurgy tool steels",
+  "description": "Powder metallurgy tool steels that combine high toughness with wear resistance, with little corrosion resistance."
+ },
+ {
+  "id": "high-speed-pm",
+  "name": "High-speed powder steels",
+  "description": "Powder metallurgy high-speed steels with tungsten, molybdenum and vanadium; very high hardness and edge retention, low corrosion resistance."
+ },
+ {
+  "id": "carbon",
+  "name": "Carbon steels",
+  "description": "Simple carbon and low-alloy steels: easy to sharpen and often tough, but they rust and patina without care."
+ }
+]

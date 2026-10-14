@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% from "macros.html" import knife_table, disclosure, steel_card %}
+{% block body %}
+<h1>{{ b.name }} knives</h1>
+<p class="answer">{{ b.description }} Our database has {{ b.knives|length }} {{ b.name }} model{{ "s" if b.knives|length != 1 }}, in {{ b.steels|map(attribute="short")|join(", ") }}.</p>
+{{ knife_table(b.knives) }}
+{{ disclosure() }}
+<p><a class="btn" href="{{ bladehq(b.name) }}" rel="nofollow sponsored noopener" target="_blank">Shop all {{ b.name }} at Blade HQ</a></p>
+<h2>Steels {{ b.name }} uses</h2>
+<div class="cards">{% for s in b.steels %}{{ steel_card(s) }}{% endfor %}</div>
+{% endblock %}

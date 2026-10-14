@@ -1,0 +1,16 @@
+{% extends "guide_base.html" %}
+{% block article %}
+<p>An everyday-carry knife gets pocket sweat, opens packages and food, and is rarely babied. That favours steels that resist rust, survive the odd twist or tip impact, and still hold a working edge. Here, steels qualify if they rate at least 6/10 for corrosion resistance and 4/10 for toughness; they are then ordered by edge retention plus toughness.</p>
+<h2>Shortlist</h2>
+<div class="table-wrap"><table class="sortable">
+<thead><tr><th>Steel</th><th data-sort="num">Edge</th><th data-sort="num">Toughness</th><th data-sort="num">Corrosion</th><th data-sort="num">Sharpening</th><th>Tier</th><th>Knives</th></tr></thead>
+<tbody>{% for s in edc %}<tr><td><a href="/steel/{{ s.id }}/">{{ s.short }}</a></td>{% for k in rating_keys %}<td class="num" data-v="{{ s.ratings[k] }}">{{ s.ratings[k] }}</td>{% endfor %}<td>{{ s.price_tier }}</td><td>{% for k in s.knives %}<a href="/knife/{{ k.id }}/">{{ k.name }}</a>{% if not loop.last %}, {% endif %}{% else %}<span class="muted">—</span>{% endfor %}</td></tr>{% endfor %}</tbody>
+</table></div>
+<h2>By budget</h2>
+{% for t, ts in tiers %}
+{% set picks = ts|selectattr("ratings.corrosion_resistance", "ge", 6)|selectattr("ratings.toughness", "ge", 4)|list %}
+{% if picks %}<h3>{{ t }}</h3><p>{% for s in picks[:4] %}<a href="/steel/{{ s.id }}/">{{ s.short }}</a> ({{ s.ratings.edge_retention }} edge / {{ s.ratings.toughness }} tough / {{ s.ratings.corrosion_resistance }} corrosion){% if not loop.last %}; {% endif %}{% endfor %}.</p>{% endif %}
+{% endfor %}
+<h2>What the shortlist leaves out</h2>
+<p>D2, CruWear, CPM 3V and CPM M4 are popular EDC steels too, but they rate 4/10 or lower for corrosion resistance, so they need wiping down and do better in dry climates. Very hard steels such as ZDP-189 hold an edge for a long time but rate low for toughness, so tip and edge chips are more likely with careless use.</p>
+{% endblock %}

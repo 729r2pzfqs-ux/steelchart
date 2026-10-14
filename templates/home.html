@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% from "macros.html" import steel_card, comp_list %}
+{% block body %}
+<section class="hero">
+<h1>Knife steel chart, ratings and comparisons</h1>
+<p class="lede">Composition, hardness and 1-10 ratings for edge retention, toughness, corrosion resistance and ease of sharpening for {{ steels|length }} popular knife steels, plus head-to-head comparisons and the knives that use each steel.</p>
+<form class="search hero-search" role="search" onsubmit="return false">
+<input type="search" class="search-input" placeholder="Try MagnaCut, D2 vs 14C28N, Para 3" aria-label="Search steels and knives" autocomplete="off">
+<div class="search-results" hidden></div>
+</form>
+<p class="hero-links"><a class="btn" href="/chart/">Open the steel chart</a> <a class="btn btn-ghost" href="/compare/">Browse comparisons</a></p>
+</section>
+
+<h2>Edge retention vs toughness</h2>
+<p class="muted">Every steel trades wear resistance against toughness. Dot size shows corrosion resistance; colour shows the steel type. Click a dot to open the steel.</p>
+<div class="chart-box">{{ svg.scatter(steels, "Knife steels: edge retention vs toughness") }}</div>
+<ul class="legend">{% for c in cats %}<li><i class="sw cat-{{ c.id }}"></i><a href="/category/{{ c.id }}/">{{ c.name }}</a></li>{% endfor %}</ul>
+
+<h2>Steel types</h2>
+<div class="cards">{% for c in cats %}<a class="card" href="/category/{{ c.id }}/"><span class="card-title">{{ c.name }}</span><span class="card-meta">{{ steels|selectattr("category", "equalto", c.id)|list|length }} steels</span><span class="card-text">{{ c.description }}</span></a>{% endfor %}</div>
+
+<h2>Popular comparisons</h2>
+{{ comp_list(popular) }}
+<p><a href="/compare/">All comparisons</a></p>
+
+<h2>Most-searched steels</h2>
+<div class="cards">{% for s in steels if s.search_volume %}{{ steel_card(s) }}{% endfor %}</div>
+
+<h2>Featured knives</h2>
+<div class="cards">{% for k in featured %}<a class="card" href="/knife/{{ k.id }}/"><span class="card-title">{{ k.name }}</span><span class="card-meta">{{ k.steel.short }} · {{ k.blade_length_in|fmt }}" blade · {{ k.weight_oz|fmt }} oz</span><span class="card-text">{{ k.lock_type }}{% if k.msrp_usd %}, list price ${{ k.msrp_usd|fmt }}{% endif %}</span></a>{% endfor %}</div>
+{% endblock %}

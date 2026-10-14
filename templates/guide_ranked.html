@@ -1,0 +1,17 @@
+{% extends "guide_base.html" %}
+{% from "macros.html" import steel_table %}
+{% block article %}
+<p>No steel wins everything. Hard carbides that make an edge last also make a blade more brittle and slower to sharpen, and the chromium that stops rust is often what limits wear resistance in simple steels. So the useful question is "best at what?" Below, the {{ steels|length }} steels on SteelChart are ranked on each property, then on a simple balanced score.</p>
+{% for k in rating_keys %}
+<h2>Best for {{ rating_names[k]|lower }}</h2>
+<ol class="rank">{% for s in by(k)[:8] %}<li><a href="/steel/{{ s.id }}/">{{ s.short }}</a> <span class="muted">{{ s.ratings[k] }}/10 · {{ cat_by_id[s.category].name|lower }}</span></li>{% endfor %}</ol>
+{% if k == "edge_retention" %}<p>The top of this list is dominated by high-vanadium powder steels and very hard high-speed steels. They hold an edge longest in slicing tests but are the slowest to sharpen.</p>
+{% elif k == "toughness" %}<p>Toughness leaders are low-carbide steels: tool steels such as CPM 3V designed for impact, and fine-grained stainless steels such as AEB-L and 14C28N. Pick from here for choppers, thin kitchen edges that must not chip, or hard use.</p>
+{% elif k == "corrosion_resistance" %}<p>Steels that keep a lot of chromium in solution, or replace some carbon with nitrogen, lead this list. LC200N, at the top, is a common choice for salt-water knives.</p>
+{% else %}<p>Simple carbon steels and fine-grained stainless steels sharpen fastest, because they contain few or no very hard vanadium carbides.</p>{% endif %}
+{% endfor %}
+<h2>Balanced ranking</h2>
+<p>This ranking uses the plain average of the four ratings, weighting each property equally. It favours all-rounders over specialists; your own priorities may weight things differently.</p>
+{{ steel_table(balanced[:15]) }}
+<p>For head-to-head detail, see comparisons such as <a href="/compare/m390-vs-magnacut/">M390 vs MagnaCut</a> or <a href="/compare/14c28n-vs-d2/">14C28N vs D2</a>, or sort the full <a href="/chart/">steel chart</a>.</p>
+{% endblock %}

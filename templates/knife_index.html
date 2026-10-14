@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% from "macros.html" import knife_table, disclosure %}
+{% block body %}
+<h1>Knife specs and steels</h1>
+<p class="lede">{{ knives|length }} popular knives with their blade steel, size, weight, lock and list price. Click a column to sort.</p>
+{{ knife_table(knives) }}
+{{ disclosure() }}
+<p class="small muted">Specs are for the standard production version. Weight varies by handle material. Prices are the maker's list price; retailers often sell for less.</p>
+{% endblock %}

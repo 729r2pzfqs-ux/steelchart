@@ -1,0 +1,56 @@
+[
+ {
+  "id": "spyderco",
+  "name": "Spyderco",
+  "country": "USA",
+  "description": "Golden, Colorado knife maker known for the round thumb hole, leaf-shaped blades and the Compression Lock."
+ },
+ {
+  "id": "benchmade",
+  "name": "Benchmade",
+  "country": "USA",
+  "description": "Oregon knife maker best known for the AXIS lock and the Bugout and Griptilian lines."
+ },
+ {
+  "id": "civivi",
+  "name": "Civivi",
+  "country": "China",
+  "description": "Budget-to-midrange brand from WE Knife, known for value folders such as the Elementum."
+ },
+ {
+  "id": "qsp",
+  "name": "QSP",
+  "country": "China",
+  "description": "Value-focused Chinese brand; the Penguin is its best-known design."
+ },
+ {
+  "id": "kershaw",
+  "name": "Kershaw",
+  "country": "USA",
+  "description": "Oregon brand of KAI USA making assisted-opening and budget-to-midrange folders."
+ },
+ {
+  "id": "zero-tolerance",
+  "name": "Zero Tolerance",
+  "country": "USA",
+  "description": "KAI USA's premium brand of hard-use folders, made in Oregon."
+ },
+ {
+  "id": "chris-reeve-knives",
+  "name": "Chris Reeve Knives",
+  "country": "USA",
+  "description": "Boise, Idaho maker of the Sebenza, the integral-lock titanium folder."
+ },
+ {
+  "id": "hogue",
+  "name": "Hogue",
+  "country": "USA",
+  "description": "California grips maker whose knife line includes the Deka with the ABLE Lock."
+ },
+ {
+  "id": "buck",
+  "name": "Buck",
+  "country": "USA",
+  "description": "Idaho maker of the Buck 110 Folding Hunter, made since 1963."
+ }
+]

@@ -1,0 +1,19 @@
+{% macro rating_bars(s) %}<dl class="ratings">{% for k in rating_keys %}<dt>{{ rating_names[k] }}</dt><dd><span class="bar"><span style="width:{{ s.ratings[k] * 10 }}%"></span></span><b>{{ s.ratings[k] }}</b>/10</dd>{% endfor %}</dl>{% endmacro %}
+
+{% macro steel_card(s) %}<a class="card" href="/steel/{{ s.id }}/"><span class="card-title">{{ s.short }}</span><span class="card-meta">{{ cat_by_id[s.category].name }} · {{ s.hrc_min }}–{{ s.hrc_max }} HRC</span><span class="mini">{% for k in rating_keys %}<span title="{{ rating_names[k] }} {{ s.ratings[k] }}/10"><i style="height:{{ s.ratings[k] * 10 }}%"></i></span>{% endfor %}</span></a>{% endmacro %}
+
+{% macro knife_table(knives, show_steel=True) %}<div class="table-wrap"><table class="sortable">
+<thead><tr><th>Knife</th>{% if show_steel %}<th>Steel</th>{% endif %}<th data-sort="num">Blade</th><th data-sort="num">Weight</th><th>Lock</th><th data-sort="num">List price</th><th>Buy</th></tr></thead>
+<tbody>{% for k in knives %}<tr><td><a href="/knife/{{ k.id }}/">{{ k.name }}</a></td>{% if show_steel %}<td><a href="/steel/{{ k.steel.id }}/">{{ k.steel.short }}</a></td>{% endif %}<td data-v="{{ k.blade_length_in or 0 }}">{{ k.blade_length_in|fmt }}"</td><td data-v="{{ k.weight_oz or 0 }}">{{ k.weight_oz|fmt }} oz</td><td>{{ k.lock_type or "—" }}</td><td data-v="{{ k.msrp_usd or 0 }}">{% if k.msrp_usd %}${{ k.msrp_usd|fmt }}{% else %}—{% endif %}</td><td><a class="buy" href="{{ k.links[0].url }}" rel="nofollow sponsored noopener" target="_blank">{{ k.links[0].name }}</a></td></tr>{% endfor %}</tbody>
+</table></div>{% endmacro %}
+
+{% macro disclosure() %}<p class="disclosure">Buy links go to retailers; some are affiliate links, and we may earn a commission at no extra cost to you. <a href="/affiliate-disclosure/">Disclosure</a>.</p>{% endmacro %}
+
+{% macro comp_list(comps) %}<ul class="pill-list">{% for c in comps %}<li><a href="/compare/{{ c.id }}/">{{ c.title }}</a></li>{% endfor %}</ul>{% endmacro %}
+
+{% macro faq_block(faq) %}<section class="faq"><h2>FAQ</h2>{% for q in faq %}<h3>{{ q.q }}</h3><p>{{ q.a }}</p>{% endfor %}</section>{% endmacro %}
+
+{% macro steel_table(steels) %}<div class="table-wrap"><table class="sortable">
+<thead><tr><th>Steel</th><th>Type</th><th data-sort="num">HRC</th>{% for k in rating_keys %}<th data-sort="num" title="{{ rating_names[k] }}">{{ rating_names[k].split(' ')[0] if k != 'ease_of_sharpening' else 'Sharpening' }}</th>{% endfor %}<th>Tier</th></tr></thead>
+<tbody>{% for s in steels %}<tr><td><a href="/steel/{{ s.id }}/">{{ s.short }}</a></td><td>{{ cat_by_id[s.category].name }}</td><td data-v="{{ s.hrc_max }}">{{ s.hrc_min }}–{{ s.hrc_max }}</td>{% for k in rating_keys %}<td data-v="{{ s.ratings[k] }}" class="num">{{ s.ratings[k] }}</td>{% endfor %}<td>{{ s.price_tier }}</td></tr>{% endfor %}</tbody>
+</table></div>{% endmacro %}
