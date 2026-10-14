@@ -34,7 +34,7 @@ DOMAIN = "steelchart.org"
 SITE_NAME = "SteelChart"
 CONTACT_EMAIL = "info@steelchart.org"
 ADSENSE_PUB = "ca-pub-5861928596436289"
-GA_ID = ""                       # TODO: GA4 measurement id (G-XXXXXXXXXX); GA tags are omitted while empty
+GA_ID = "G-1B8ZG0EDPL"            # GA4 measurement id; GA tags are omitted while empty
 AD_SLOTS: dict[str, str] = {}    # TODO: AdSense slot ids {"inline": "...", "side": "..."}; empty = auto ads only
 TODAY = date.today()
 
@@ -543,6 +543,8 @@ class Site:
         write(DOCS / "ads.txt", f"google.com, {ADSENSE_PUB.replace('ca-', '')}, DIRECT, f08c47fec0942fa0\n")
         write(DOCS / "search-index.json", json.dumps(self.search, separators=(",", ":"), ensure_ascii=False))
         write(DOCS / "CNAME", DOMAIN + "\n")
+        write(DOCS / "disavow.txt", f"# Disavow file for {DOMAIN}\n# Upload via Google Search Console > Disavow links tool.\n"
+                                    "# One entry per line: domain:example.com or a full URL. Lines starting with # are comments.\n")
         write(DOCS / ".nojekyll", "")
         shutil.copytree(ROOT / "static", DOCS / "static")
         fav = ROOT / "favicon"

@@ -45,7 +45,7 @@ python3 -m http.server 8766 -d docs    # local preview
 
 ## Site settings (top of build.py)
 
-- `ADSENSE_PUB` is set; `GA_ID` and `AD_SLOTS` are placeholders (empty = no GA tags / auto ads only).
+- `ADSENSE_PUB` is set; `GA_ID` is G-1B8ZG0EDPL; `AD_SLOTS` is a placeholder (empty = auto ads only). Build also writes docs/disavow.txt.
 - Titles must be <= 60 chars (render() asserts). Descriptions are trimmed to 158 chars. Keep both unique.
 - Comparison URLs are alphabetical by slug (`/compare/<a>-vs-<b>/`); the reverse URL is a noindex
   meta-refresh stub with a canonical link.

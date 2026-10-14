@@ -1,0 +1,3 @@
+# Disavow file for steelchart.org
+# Upload via Google Search Console > Disavow links tool.
+# One entry per line: domain:example.com or a full URL. Lines starting with # are comments.
