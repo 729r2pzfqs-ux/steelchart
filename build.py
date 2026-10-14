@@ -333,14 +333,14 @@ class Site:
     def render(self, tpl: str, path: str, title: str, description: str, crumbs=(), jsonld=(), priority=0.5, **ctx):
         assert len(title) <= 60, (path, len(title), title)
         description = fit_desc(description)
-        ld = [{"@context": "https://schema.org", "@type": "WebSite", "name": SITE_NAME, "url": SITE_URL + "/"}] if path != "/" else []
-        ld += list(jsonld)
-        if crumbs:
+        is_404 = path == "/404.html"
+        ld = list(jsonld)
+        if crumbs and not is_404:
             ld.append({"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
                 {"@type": "ListItem", "position": i + 1, "name": label, "item": SITE_URL + href}
                 for i, (href, label) in enumerate(crumbs)]})
         html = self.env.get_template(tpl).render(path=path, title=title, description=description, crumbs=list(crumbs),
-                                                 jsonld=ld, **ctx)
+                                                 jsonld=ld, is_404=is_404, **ctx)
         out = DOCS / ("404.html" if path == "/404.html" else path.lstrip("/") + "index.html")
         write(out, html)
         if path != "/404.html":
