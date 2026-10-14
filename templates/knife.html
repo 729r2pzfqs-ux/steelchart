@@ -2,7 +2,7 @@
 {% from "macros.html" import rating_bars, disclosure, comp_list %}
 {% block body %}
 <h1>{{ k.name }} specs and steel</h1>
-<p class="answer">The {{ k.name }} has a {{ k.blade_length_in|fmt }}" {{ (k.blade_shape or "")|lower }} blade in <a href="/steel/{{ s.id }}/">{{ s.name }}</a>, weighs {{ k.weight_oz|fmt }} oz and uses a {{ (k.lock_type or "")|lower }}.{% if k.msrp_usd %} Its list price is ${{ k.msrp_usd|fmt }}; retailers often sell for less.{% endif %}</p>
+<p class="answer">The {{ k.name }} has a {{ k.blade_length_in|fmt }}" {{ (k.blade_shape or "")|lower }} blade in <a href="/steel/{{ s.id }}/">{{ s.name }}</a>, weighs {{ k.weight_oz|fmt }} oz and {% if k.lock_type %}uses {{ k.lock_type|lock_phrase }}{% else %}is a fixed blade{% endif %}.{% if k.msrp_usd %} Its list price is ${{ k.msrp_usd|fmt }}; retailers often sell for less.{% endif %}</p>
 <div class="chart-box">{{ svg.blade(k.blade_shape, k.blade_length_in, k.name) }}</div>
 <div class="grid2">
 <section class="panel">

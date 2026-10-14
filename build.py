@@ -71,6 +71,27 @@ def fmt(v) -> str:
     return str(v)
 
 
+# Brand-named locks keep their capitalisation in running text; generic names are lowercased.
+PROPER_LOCKS = {"Reeve Integral Lock"}
+
+
+def lock_name(lock: str | None) -> str | None:
+    """'Compression lock' -> 'compression lock'; 'AXIS lock', 'ABLE Lock', 'Reeve Integral Lock' unchanged."""
+    if not lock:
+        return None
+    if lock in PROPER_LOCKS or any(len(w) > 1 and w.isupper() for w in lock.split()):
+        return lock
+    return lock.lower()
+
+
+def lock_phrase(lock: str | None) -> str:
+    """Lock with its indefinite article: 'a compression lock', 'an AXIS lock', 'an ABLE Lock'."""
+    name = lock_name(lock)
+    if not name:
+        return ""
+    return f"{'an' if name[0].lower() in 'aeiou' else 'a'} {name}"
+
+
 def level(v: int) -> str:
     return "very high" if v >= 9 else "high" if v >= 7 else "moderate" if v >= 5 else "low" if v >= 3 else "very low"
 
@@ -318,6 +339,7 @@ class Site:
         self.env = Environment(loader=FileSystemLoader(ROOT / "templates"), autoescape=select_autoescape(["html"]),
                                trim_blocks=True, lstrip_blocks=True, extensions=["jinja2.ext.do"])
         self.env.filters["fmt"] = fmt
+        self.env.filters["lock_phrase"] = lock_phrase
         self.env.filters["level"] = level
         self.env.globals.update(svg=svg, ad=self.ad, asset=asset, site_url=SITE_URL, site_name=SITE_NAME, email=CONTACT_EMAIL,
                                 adsense_pub=ADSENSE_PUB, ga_id=GA_ID, og_image=OG_IMAGE, year_now=TODAY.year, rating_keys=RATING_KEYS,
@@ -460,7 +482,7 @@ class Site:
             s = k["steel"]
             title = f"{k['name']} Specs & Steel"
             desc = (f"{k['name']}: {s['short']} steel, {fmt(k['blade_length_in'])}\" blade, {fmt(k['weight_oz'])} oz, "
-                    f"{(k['lock_type'] or '').lower()}. Full specs, steel ratings and where to buy.")
+                    f"{lock_name(k['lock_type']) or 'fixed blade'}. Full specs, steel ratings and where to buy.")
             same_steel = [x for x in self.knives if x["steel_id"] == k["steel_id"] and x["id"] != k["id"]]
             same_brand = [x for x in self.knives if x["brand"] == k["brand"] and x["id"] != k["id"]]
             price = k.get("msrp_usd") or 0
