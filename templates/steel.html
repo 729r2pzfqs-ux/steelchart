@@ -13,6 +13,7 @@
 <dt>Maker</dt><dd>{{ s.manufacturer }}{% if s.country %} ({{ s.country }}){% endif %}</dd>
 <dt>Process</dt><dd>{{ s.process }}</dd>
 <dt>Price tier</dt><dd>{{ s.price_tier }}</dd>
+{% if s.brands %}<dt>Used by</dt><dd>{% for n in s.brands %}{% if n in brand_id_by_name %}<a href="/brand/{{ brand_id_by_name[n] }}/">{{ n }}</a>{% else %}{{ n }}{% endif %}{% if not loop.last %}, {% endif %}{% endfor %}</dd>{% endif %}
 {% if s.aliases %}<dt>Also called</dt><dd>{{ s.aliases|join(", ") }}</dd>{% endif %}
 </dl>
 </section>
@@ -39,7 +40,7 @@
 {% endif %}
 
 <h2>Knives in {{ s.short }}</h2>
-{% if s.knives %}{{ knife_table(s.knives, False) }}{{ disclosure() }}{% else %}<p class="muted">No knife in our current database uses {{ s.short }}.{% if s.brands %} Brands known to use it include {{ s.brands|join(", ") }}.{% endif %}</p>{% endif %}
+{% if s.knives %}{{ knife_table(s.knives, False) }}{{ disclosure() }}{% else %}<p class="muted">No knife in our current database uses {{ s.short }}.</p>{% endif %}
 <p><a class="btn" href="{{ bladehq(s.short ~ ' knife') }}" rel="nofollow sponsored noopener" target="_blank">Shop {{ s.short }} knives at Blade HQ</a></p>
 {{ ad("inline") }}
 

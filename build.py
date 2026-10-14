@@ -306,6 +306,8 @@ class Site:
                                 adsense_pub=ADSENSE_PUB, ga_id=GA_ID, og_image=OG_IMAGE, year_now=TODAY.year, rating_keys=RATING_KEYS,
                                 rating_names=RATING_NAMES, cats=self.cats, cat_by_id=self.C, steels_by_id=self.S,
                                 steel_id_by_name={s['name']: s['id'] for s in self.steels},
+                                brand_id_by_name={**{b['name'].removesuffix(' Knives'): b['id'] for b in self.brands},
+                                                  **{b['name']: b['id'] for b in self.brands}},
                                 elements=svg.ELEMENT_ORDER, element_names=svg.ELEMENT_NAMES, bladehq=bladehq,
                                 top_comps=sorted(self.comps, key=lambda c: -(c["search_volume"] or 0))[:8])
 

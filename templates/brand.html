@@ -3,7 +3,7 @@
 {% block body %}
 <h1>{{ b.name }} knives</h1>
 <p class="answer">{{ b.description }} Our database has {{ b.knives|length }} {{ b.name }} model{{ "s" if b.knives|length != 1 }}, in {{ b.steels|map(attribute="short")|join(", ") }}.</p>
-{{ knife_table(b.knives) }}
+{{ knife_table(b.knives, show_brand=False) }}
 {{ disclosure() }}
 <p><a class="btn" href="{{ bladehq(b.name) }}" rel="nofollow sponsored noopener" target="_blank">Shop all {{ b.name }} at Blade HQ</a></p>
 <h2>Steels {{ b.name }} uses</h2>
