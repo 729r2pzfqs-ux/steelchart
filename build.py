@@ -530,7 +530,7 @@ class Site:
                 ("privacy", "Privacy Policy", "SteelChart privacy policy: what data is collected, cookies, advertising and analytics."),
                 ("terms", "Terms of Use", "SteelChart terms of use: information only, no warranty, trademarks and affiliate links."),
                 ("affiliate-disclosure", "Affiliate Disclosure", "SteelChart affiliate disclosure: how buy links work and how they affect (and do not affect) our data.")):
-            self.render(f"page_{slug.replace('-', '_')}.html", f"/{slug}/", f"{title} | {SITE_NAME}" if len(title) < 45 else title,
+            self.render(f"page_{slug.replace('-', '_')}.html", f"/{slug}/", f"{title} | {SITE_NAME}" if len(title) < 45 and SITE_NAME not in title else title,
                         desc, crumbs=[("/", "Home"), (f"/{slug}/", title)], priority=0.3, heading=title,
                         updated=TODAY.isoformat(), steel_count=len(self.steels))
         self.render("404.html", "/404.html", f"Page Not Found | {SITE_NAME}", "Page not found.",
