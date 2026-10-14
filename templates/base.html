@@ -65,9 +65,9 @@ gtag('consent', 'default', {'analytics_storage': 'granted', 'ad_storage': 'grant
 <footer class="site-footer">
 <div class="wrap">
 <div class="footer-grid">
-<div><h4>Steels</h4>{% for c in cats %}<a href="/category/{{ c.id }}/">{{ c.name }}</a>{% endfor %}<a href="/chart/">Steel chart</a></div>
-<div><h4>Popular comparisons</h4>{% for c in top_comps %}<a href="/compare/{{ c.id }}/">{{ c.title }}</a>{% endfor %}</div>
-<div><h4>Site</h4><a href="/about/">About &amp; methodology</a><a href="/guide/">Guides</a><a href="/brand/">Brands</a><a href="/affiliate-disclosure/">Affiliate disclosure</a><a href="/privacy/">Privacy policy</a><a href="/terms/">Terms of use</a><a href="mailto:{{ email }}">Contact</a></div>
+<div><p class="footer-h">Steels</p>{% for c in cats %}<a href="/category/{{ c.id }}/">{{ c.name }}</a>{% endfor %}<a href="/chart/">Steel chart</a></div>
+<div><p class="footer-h">Popular comparisons</p>{% for c in top_comps %}<a href="/compare/{{ c.id }}/">{{ c.title }}</a>{% endfor %}</div>
+<div><p class="footer-h">Site</p><a href="/about/">About &amp; methodology</a><a href="/guide/">Guides</a><a href="/brand/">Brands</a><a href="/affiliate-disclosure/">Affiliate disclosure</a><a href="/privacy/">Privacy policy</a><a href="/terms/">Terms of use</a><a href="mailto:{{ email }}">Contact</a></div>
 </div>
 <p class="fine">Steel ratings are relative 1-10 scores across knife steels, compiled from manufacturer datasheets and published test data; see <a href="/about/">methodology</a>. Some links are affiliate links: we may earn a commission on purchases at no extra cost to you. &copy; {{ year_now }} SteelChart.org · <a href="mailto:{{ email }}">{{ email }}</a></p>
 </div>
