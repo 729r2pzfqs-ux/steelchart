@@ -38,6 +38,8 @@ ADSENSE_PUB = "ca-pub-5861928596436289"
 GA_ID = "G-1B8ZG0EDPL"            # GA4 measurement id; GA tags are omitted while empty
 AD_SLOTS: dict[str, str] = {}    # TODO: AdSense slot ids {"inline": "...", "side": "..."}; empty = auto ads only
 TODAY = date.today()
+DATA_UPDATED = "2026-10-14"   # last data/content change: dateModified, sitemap lastmod, "Updated" lines
+PUBLISHED = "2026-10-14"      # site launch: datePublished
 
 RATING_KEYS = [k for k, _ in svg.AXES]
 RATING_NAMES = dict(svg.AXES)
@@ -376,7 +378,10 @@ class Site:
             faq = steel_faq(s)
             ld = [{"@context": "https://schema.org", "@type": "TechArticle", "headline": f"{s['name']} steel",
                    "description": steel_answer(s), "about": {"@type": "Thing", "name": s["name"]},
-                   "author": {"@type": "Organization", "name": SITE_NAME}, "dateModified": TODAY.isoformat()},
+                   "author": {"@type": "Organization", "name": SITE_NAME},
+                   "publisher": {"@type": "Organization", "name": SITE_NAME, "logo": SITE_URL + "/favicon-512.png"},
+                   "image": OG_IMAGE, "datePublished": PUBLISHED, "dateModified": DATA_UPDATED,
+                   "mainEntityOfPage": f"{SITE_URL}/steel/{s['id']}/"},
                   {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
                       {"@type": "Question", "name": q["q"], "acceptedAnswer": {"@type": "Answer", "text": q["a"]}} for q in faq]}]
             cat = self.C[s["category"]]
@@ -513,13 +518,14 @@ class Site:
         self.guides = [{"slug": g[0], "title": g[1], "summary": g[2]} for g in guides]
         for slug, title, summary, tpl in guides:
             ld = [{"@context": "https://schema.org", "@type": "Article", "headline": title, "description": summary,
-                   "dateModified": TODAY.isoformat(), "author": {"@type": "Organization", "name": SITE_NAME},
-                   "publisher": {"@type": "Organization", "name": SITE_NAME}, "mainEntityOfPage": f"{SITE_URL}/guide/{slug}/"}]
+                   "image": OG_IMAGE, "datePublished": PUBLISHED, "dateModified": DATA_UPDATED,
+                   "author": {"@type": "Organization", "name": SITE_NAME},
+                   "publisher": {"@type": "Organization", "name": SITE_NAME, "logo": SITE_URL + "/favicon-512.png"}, "mainEntityOfPage": f"{SITE_URL}/guide/{slug}/"}]
             self.render(tpl, f"/guide/{slug}/", title, summary,
                         crumbs=[("/", "Home"), ("/guide/", "Guides"), (f"/guide/{slug}/", title)], jsonld=ld, priority=0.7,
                         g={"slug": slug, "title": title, "summary": summary}, by=by, balanced=balanced, tiers=tiers,
                         edc=edc, carbon=carbon, stainless=stainless, avg=avg, steels=self.steels, knives=self.knives,
-                        guides=self.guides)
+                        guides=self.guides, updated=DATA_UPDATED)
             self.search.append({"t": title, "u": f"/guide/{slug}/", "d": "Guide"})
         self.render("guide_index.html", "/guide/", "Knife Steel Guides",
                     "Guides to choosing a knife steel: rankings by property, steel types, carbon vs stainless and the best steels for EDC.",
@@ -533,13 +539,13 @@ class Site:
                 ("affiliate-disclosure", "Affiliate Disclosure", "SteelChart affiliate disclosure: how buy links work and how they affect (and do not affect) our data.")):
             self.render(f"page_{slug.replace('-', '_')}.html", f"/{slug}/", f"{title} | {SITE_NAME}" if len(title) < 45 and SITE_NAME not in title else title,
                         desc, crumbs=[("/", "Home"), (f"/{slug}/", title)], priority=0.3, heading=title,
-                        updated=TODAY.isoformat(), steel_count=len(self.steels))
+                        updated=DATA_UPDATED, steel_count=len(self.steels))
         self.render("404.html", "/404.html", f"Page Not Found | {SITE_NAME}", "Page not found.",
                     crumbs=[("/", "Home"), ("/404.html", "Page not found")])
 
     def finish(self):
         sm = ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
-        sm += [f"  <url><loc>{SITE_URL}{u}</loc><lastmod>{TODAY.isoformat()}</lastmod><priority>{p:.1f}</priority></url>"
+        sm += [f"  <url><loc>{SITE_URL}{u}</loc><lastmod>{DATA_UPDATED}</lastmod><priority>{p:.1f}</priority></url>"
                for u, p in sorted(self.urls)]
         sm.append("</urlset>")
         write(DOCS / "sitemap.xml", "\n".join(sm) + "\n")
