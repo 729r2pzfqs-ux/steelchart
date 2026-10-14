@@ -103,4 +103,4 @@ table.sortable th[aria-sort=ascending]::after{content:" ▲"}table.sortable th[a
 .footer-h{color:#fff;font-weight:700;margin:0 0 6px}
 .fine{margin-top:18px;color:#8e99ad;font-size:.85rem}.fine a{display:inline}
 @media (max-width:720px){.grid2{grid-template-columns:1fr}h1{font-size:1.55rem}.hero h1{font-size:1.75rem}.header-tools{flex-basis:100%}.nav{gap:12px}
-.facts,.ratings{grid-template-columns:1fr auto}.facts{grid-template-columns:1fr}.facts dt{margin-top:6px}}
+.facts{grid-template-columns:1fr}.facts dt{margin-top:6px}.ratings{grid-template-columns:max-content minmax(0,1fr);gap:6px 10px}.ratings dd{min-width:0}.bar{min-width:60px}}
