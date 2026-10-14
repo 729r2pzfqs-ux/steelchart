@@ -195,6 +195,9 @@ def steel_faq(s: dict) -> list[dict]:
     ]
 
 
+TIER_RANK = {"Budget": 0, "Mid-range": 1, "Premium": 2, "Ultra-premium": 3}
+
+
 def verdict(a: dict, b: dict) -> tuple[str, list[str]]:
     ra, rb = a["ratings"], b["ratings"]
     wa = [k for k in RATING_KEYS if ra[k] > rb[k]]
@@ -203,25 +206,32 @@ def verdict(a: dict, b: dict) -> tuple[str, list[str]]:
     def join(ks):
         p = [WIN_PHRASE[k] for k in ks]
         return p[0] if len(p) == 1 else ", ".join(p[:-1]) + " and " + p[-1]
-    parts = []
-    if wa:
-        parts.append(f"{a['short']} {join(wa)}")
-    if wb:
-        parts.append(f"{b['short']} {join(wb)}")
-    if not parts:
-        main = f"{a['short']} and {b['short']} rate the same on all four properties."
-    else:
-        main = "; ".join(parts) + "."
-        main = main[0].upper() + main[1:]
-    choose = []
-    if wa:
-        top = max(wa, key=lambda k: ra[k] - rb[k])
-        choose.append(f"Choose {a['short']} for {CHOOSE_PHRASE[top]}")
-    if wb:
-        top = max(wb, key=lambda k: rb[k] - ra[k])
-        choose.append(f"{b['short']} for {CHOOSE_PHRASE[top]}")
-    tail = (", ".join(choose) + ".") if choose else "The choice comes down to price and the knives available in each."
-    return main, [tail]
+    if not wa and not wb:
+        return (f"{a['short']} and {b['short']} rate the same on all four properties.",
+                ["The choice comes down to price and the knives available in each."])
+    if not wa or not wb:
+        # one steel wins every property that differs
+        win, lose, ws = (a, b, wa) if wa else (b, a, wb)
+        ties = [RATING_NAMES[k].lower() for k in RATING_KEYS if ra[k] == rb[k]]
+        if len(ws) == len(RATING_KEYS):
+            main = f"{win['short']} beats {lose['short']} on all four ratings: it {join(ws)}."
+        else:
+            tie_txt = ties[0] if len(ties) == 1 else ", ".join(ties[:-1]) + " and " + ties[-1]
+            main = f"{win['short']} {join(ws)}, and the two tie on {tie_txt}."
+        top = max(ws, key=lambda k: abs(ra[k] - rb[k]))
+        gap = abs(ra[top] - rb[top])
+        tail = [f"The biggest gap is {RATING_NAMES[top].lower()} ({win['ratings'][top]}/10 vs {lose['ratings'][top]}/10)."] if len(ws) > 1 else []
+        if TIER_RANK.get(lose["price_tier"], 0) < TIER_RANK.get(win["price_tier"], 0):
+            tail.append(f"{lose['short']} is the cheaper steel ({lose['price_tier'].lower()} vs {win['price_tier'].lower()} price tier).")
+        elif gap <= 1:
+            tail.append("The differences are small, so the knife itself matters more than the steel.")
+        else:
+            tail.append(f"{lose['short']} does not beat {win['short']} on any rating, so pick it for a specific knife rather than for the steel.")
+        return main, [" ".join(tail)]
+    main = f"{a['short']} {join(wa)}; {b['short']} {join(wb)}."
+    top_a = max(wa, key=lambda k: ra[k] - rb[k])
+    top_b = max(wb, key=lambda k: rb[k] - ra[k])
+    return main, [f"Choose {a['short']} for {CHOOSE_PHRASE[top_a]}, {b['short']} for {CHOOSE_PHRASE[top_b]}."]
 
 
 def property_breakdown(a: dict, b: dict) -> list[dict]:
@@ -418,7 +428,8 @@ class Site:
                     "a": (f"{a['short']} ({a['ratings']['corrosion_resistance']}/10)" if a['ratings']['corrosion_resistance'] > b['ratings']['corrosion_resistance']
                           else f"{b['short']} ({b['ratings']['corrosion_resistance']}/10)" if b['ratings']['corrosion_resistance'] > a['ratings']['corrosion_resistance']
                           else f"Neither: both rate {a['ratings']['corrosion_resistance']}/10")
-                         + f". {a['short']} is a {CAT_PHRASE[a['category']]}; {b['short']} is a {CAT_PHRASE[b['category']]}."}]
+                         + (f". Both are {CAT_PHRASE[a['category']]}s." if a["category"] == b["category"] else
+                            f". {a['short']} is a {CAT_PHRASE[a['category']]}; {b['short']} is a {CAT_PHRASE[b['category']]}.")}]
             ld = [{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
                       {"@type": "Question", "name": q["q"], "acceptedAnswer": {"@type": "Answer", "text": q["a"]}} for q in faq]},
                   {"@context": "https://schema.org", "@type": "ItemList", "name": c["title"], "itemListElement": [
