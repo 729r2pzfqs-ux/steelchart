@@ -2,7 +2,7 @@
 {% from "macros.html" import rating_bars, disclosure, comp_list %}
 {% block body %}
 <h1>{{ k.name }} specs and steel</h1>
-<p class="answer">The {{ k.name }} has a {{ k.blade_length_in|fmt }}" {{ (k.blade_shape or "")|lower }} blade in <a href="/steel/{{ s.id }}/">{{ s.name }}</a>, weighs {{ k.weight_oz|fmt }} oz and {% if k.lock_type %}uses {{ k.lock_type|lock_phrase }}{% else %}is a fixed blade{% endif %}.{% if k.msrp_usd %} Its list price is ${{ k.msrp_usd|fmt }}; retailers often sell for less.{% endif %}</p>
+<p class="answer">The {{ k.name }} has a {{ k.blade_length_in|fmt }}" {% if k.blade_shape %}{{ k.blade_shape|lower }} {% endif %}blade in <a href="/steel/{{ s.id }}/">{{ s.name }}</a>{% if k.weight_oz %}, weighs {{ k.weight_oz|fmt }} oz{% endif %}{% if k.lock_type and "automatic" in k.lock_type|lower %} and is {{ k.lock_type|lock_phrase }}{% elif k.lock_type %} and uses {{ k.lock_type|lock_phrase }}{% elif k|kind %} and is a {{ k|kind }}{% endif %}.{% if k.msrp_usd %} Its list price is ${{ k.msrp_usd|money }}; retailers often sell for less.{% endif %}</p>
 <div class="chart-box">{{ svg.blade(k.blade_shape, k.blade_length_in, k.name) }}</div>
 <div class="grid2">
 <section class="panel">
@@ -12,7 +12,7 @@
 <dt>Blade length</dt><dd>{{ k.blade_length_in|fmt }}"</dd>
 {% if k.overall_length_in %}<dt>Overall length</dt><dd>{{ k.overall_length_in|fmt }}"</dd>{% endif %}
 {% if k.blade_thickness_in %}<dt>Blade thickness</dt><dd>{{ k.blade_thickness_in|fmt }}"</dd>{% endif %}
-<dt>Weight</dt><dd>{{ k.weight_oz|fmt }} oz</dd>
+<dt>Weight</dt><dd>{% if k.weight_oz %}{{ k.weight_oz|fmt }} oz{% else %}—{% endif %}</dd>
 <dt>Lock</dt><dd>{{ k.lock_type or "—" }}</dd>
 <dt>Handle</dt><dd>{{ k.handle_material or "—" }}</dd>
 <dt>Blade shape</dt><dd>{{ k.blade_shape or "—" }}</dd>
@@ -20,7 +20,7 @@
 {% if k.country_of_origin %}<dt>Made in</dt><dd>{{ k.country_of_origin }}</dd>{% endif %}
 <dt>Model</dt><dd>{{ k.model }}</dd>
 <dt>Brand</dt><dd><a href="/brand/{{ brand.id }}/">{{ k.brand }}</a></dd>
-{% if k.msrp_usd %}<dt>List price</dt><dd>${{ k.msrp_usd|fmt }}</dd>{% endif %}
+{% if k.msrp_usd %}<dt>List price</dt><dd>${{ k.msrp_usd|money }}</dd>{% endif %}
 </dl>
 {% if k.notes %}<p class="small muted">{{ k.notes }}</p>{% endif %}
 </section>
@@ -39,6 +39,6 @@
 
 {% if same_brand %}<h2>More {{ k.brand }} knives</h2><ul class="link-list">{% for x in same_brand %}<li><a href="/knife/{{ x.id }}/">{{ x.name }}</a> <span class="muted">{{ x.steel.short }}</span></li>{% endfor %}</ul>{% endif %}
 {% if same_steel %}<h2>Other knives in {{ s.short }}</h2><ul class="link-list">{% for x in same_steel %}<li><a href="/knife/{{ x.id }}/">{{ x.name }}</a></li>{% endfor %}</ul>{% endif %}
-{% if similar_price %}<h2>Similar price</h2><ul class="link-list">{% for x in similar_price %}<li><a href="/knife/{{ x.id }}/">{{ x.name }}</a> <span class="muted">{{ x.steel.short }}, list ${{ x.msrp_usd|fmt }}</span></li>{% endfor %}</ul>{% endif %}
+{% if similar_price %}<h2>Similar price</h2><ul class="link-list">{% for x in similar_price %}<li><a href="/knife/{{ x.id }}/">{{ x.name }}</a> <span class="muted">{{ x.steel.short }}, list ${{ x.msrp_usd|money }}</span></li>{% endfor %}</ul>{% endif %}
 {% if k.verified_url %}<p class="small muted">Specs checked on {{ checked }} against <a href="{{ k.verified_url }}" rel="nofollow noopener" target="_blank">{% if "knifecenter.com" in k.verified_url %}a dealer listing (the maker's site blocks automated checks){% else %}the maker's product page{% endif %}</a>.</p>{% endif %}
 {% endblock %}

@@ -5,6 +5,8 @@
 Sources (data/source/, compiled 2026-10-14 for the site plan):
   knife_steels_database.json  128 steels: composition (wt%), HRC range, 1-10 ratings, aliases, equivalence groups
   knives.json                 76 knife models: specs, steel, prices
+  knives_added.json           knives added after Phase 0 so every steel has knives; each record was checked
+                              against the maker's page (or a dealer listing) and carries its verified_url
 
 Phase 0 scope (from the site plan): the 30 most-searched steels, the 20 most popular knives, the top
 comparison pairs by US search volume. Knife specs are then overridden with values verified against the
@@ -50,6 +52,9 @@ KNIVES = [(1, "spyderco-para-3"), (3, "spyderco-paramilitary-2"), (13, "benchmad
 KNIFE_STEEL = {"CPM S45VN": "s45vn", "CPM S30V": "s30v", "CPM S35VN": "s35vn", "VG-10": "vg-10", "8Cr13MoV": "8cr13mov",
                "CPM 3V": "3v", "CPM CruWear": "cruwear", "D2": "d2", "14C28N": "14c28n", "CPM 20CV": "20cv",
                "CPM MagnaCut": "magnacut", "420HC": "420hc", "CPM M4": "m4"}
+KNIFE_FIELDS = ("id", "brand", "model", "steel_id", "blade_length_in", "overall_length_in", "blade_thickness_in", "weight_oz",
+                "lock_type", "handle_material", "blade_shape", "msrp_usd", "category", "opening_mechanism",
+                "country_of_origin", "notes", "verified_url")
 # Overrides from manufacturer pages (filled from the verification pass): slug -> {field: value, "verified_url": ...}
 KNIFE_VERIFIED: dict[str, dict] = {
     # Checked 2026-10-14 against the maker's product page (Buck and Hogue block automated access, so their values
@@ -161,6 +166,30 @@ BRANDS = {
     "Chris Reeve Knives": ("chris-reeve-knives", "USA", "Boise, Idaho maker of the Sebenza, the integral-lock titanium folder."),
     "Hogue": ("hogue", "USA", "California grips maker whose knife line includes the Deka with the ABLE Lock."),
     "Buck": ("buck", "USA", "Idaho maker of the Buck 110 Folding Hunter, made since 1963."),
+    # brands of the knives in data/source/knives_added.json
+    "Microtech": ("microtech", "USA", "North Carolina maker best known for its Ultratech and UTX out-the-front automatics, now built with Böhler M390MK blades."),
+    "WE Knife": ("we-knife", "China", "Yangjiang-based premium brand (parent of Civivi) producing titanium-handled folders in M390 and CPM 20CV."),
+    "Demko": ("demko", "USA", "Andrew Demko's Pennsylvania company, maker of the Shark Lock AD20.5 series, with production knives manufactured in Taiwan."),
+    "Fällkniven": ("fallkniven", "Sweden", "Boden-based Swedish company whose F1 pilot survival knife has been issued to the Swedish Air Force since 1995."),
+    "Pro-Tech": ("pro-tech", "USA", "Santa Fe Springs, California maker of American-made automatic knives such as the Godfather, Malibu and TR-series."),
+    "Cold Steel": ("cold-steel", "USA", "Ventura, California-based maker of hard-use fixed blades, folders and swords, known for the Tri-Ad lock and the SRK and Trail Master lines."),
+    "Böker": ("boker", "Germany", "Solingen cutlery house founded in 1869 whose Böker Germany line is made in Solingen; Böker Plus and Magnum are imported sub-brands."),
+    "Böker Plus": ("boker-plus", "Germany", "Böker's value line, designed in Solingen and produced outside Germany (mostly Asia), covering designer-collaboration folders and fixed blades."),
+    "Fox Knives": ("fox-knives", "Italy", "Maniago-based cutler (Oreste Frati S.r.l.) known for Italian-made folders, karambits and tactical knives, many in Böhler N690Co."),
+    "Rockstead": ("rockstead", "Japan", "Sakai, Osaka maker of mirror-polished, convex-ground high-end folders built around ZDP-189 and other Japanese super steels."),
+    "ESEE": ("esee", "USA", "Idaho-based maker of 1095 carbon steel survival and bushcraft fixed blades backed by an unconditional lifetime warranty."),
+    "Ontario Knife Company": ("ontario-knife-company", "USA", "Long-running US knife maker (RAT folders, Air Force Survival Knife) whose RAT series is produced in Taiwan."),
+    "SOG": ("sog", "USA", "Oregon-based brand founded in 1986 around the SEAL and SEAL Pup fixed blades, now making folders, fixed blades and multi-tools."),
+    "CRKT": ("crkt", "USA", "Columbia River Knife & Tool, an Oregon company producing designer-collaboration folders and fixed blades, mostly made in Taiwan and China."),
+    "Bradford Knives": ("bradford-knives", "USA", "Small US maker best known for the Guardian series of compact fixed blades offered in a range of steels."),
+    "Winkler Knives": ("winkler-knives", "USA", "Boone, North Carolina shop founded by bladesmith Daniel Winkler, making 80CrV2 fixed blades for military and outdoor use."),
+    "Shun": ("shun", "Japan", "Kai's premium kitchen knife brand, handcrafted in Seki City with VG-MAX, SG2 and Dual Core blades."),
+    "Miyabi": ("miyabi", "Japan", "Zwilling's Seki-made Japanese kitchen knife brand, built around SG2 (MC63) and FC61 powder-steel cores."),
+    "Sukenari": ("sukenari", "Japan", "Toyama Prefecture kitchen knife maker known for working with hard powder steels such as HAP40 and ZDP-189."),
+    "Hatsukokoro": ("hatsukokoro", "Japan", "Japanese kitchen knife brand that commissions blades from workshops in Seki, Tosa and Sanjo in a range of carbon and high-speed steels."),
+    "Yoshikane": ("yoshikane", "Japan", "Sanjo City hammon workshop known for thin, hammer-forged stainless-clad White #2 and SKD gyutos."),
+    "Masamoto": ("masamoto", "Japan", "Tokyo knife maker founded in the 1800s whose KS-series White #2 gyuto is a benchmark among professional chefs."),
+    "Sakai Takayuki": ("sakai-takayuki", "Japan", "Sakai, Osaka cutlery house (Aoki Hamono) producing hand-forged traditional and modern kitchen knives."),
 }
 
 
@@ -210,6 +239,13 @@ def main() -> None:
         rec.pop("street_price_usd")  # compiled estimate, not verifiable; the site shows the maker's list price
         assert rec["steel_id"] in slug_of.values(), (slug, rec["steel_id"])
         knives.append(rec)
+    # knives added after Phase 0 (one JSON record per knife, already in the output format, all verified)
+    added = json.loads((SRC / "knives_added.json").read_text())
+    for k in added["knives"]:
+        rec = {f: k.get(f) for f in KNIFE_FIELDS}
+        assert rec["steel_id"] in slug_of.values(), (rec["id"], rec["steel_id"])
+        assert rec["verified_url"] and rec["id"] not in {x["id"] for x in knives}, rec["id"]
+        knives.append(rec)
     (OUT / "knives.json").write_text(json.dumps(knives, indent=1, ensure_ascii=False) + "\n")
 
     comps, seen = [], set()
@@ -226,6 +262,7 @@ def main() -> None:
     (OUT / "comparisons.json").write_text(json.dumps(comps, indent=1) + "\n")
 
     used = {k["brand"] for k in knives}
+    assert used <= set(BRANDS), used - set(BRANDS)
     brands = [{"id": v[0], "name": n, "country": v[1], "description": v[2]} for n, v in BRANDS.items() if n in used]
     (OUT / "brands.json").write_text(json.dumps(brands, indent=1) + "\n")
     cats = [{"id": c, "name": v[0], "description": v[1]} for c, v in CATEGORIES.items()

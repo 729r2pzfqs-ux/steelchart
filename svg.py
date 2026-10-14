@@ -174,7 +174,7 @@ def blade(shape: str | None, length_in: float | None, label: str) -> Markup:
     key = next((k for k in ("wharncliffe", "sheepsfoot", "tanto", "spear", "clip", "leaf", "drop") if k in s), "drop")
     key = {"spear": "spear point", "clip": "clip point", "drop": "drop point"}.get(key, key)
     path = BLADES[key]
-    cap = f"{shape} blade" + (f', {length_in}" long' if length_in else "")
+    cap = (f"{shape} blade" if shape else "Blade") + (f', {length_in}" long' if length_in else "")
     return Markup(
         f'<svg viewBox="0 0 400 110" width="100%" role="img" aria-labelledby="bt" class="chart blade">'
         f'<title id="bt">{escape(label)}: {escape(cap)} (generic profile, not to scale)</title>'

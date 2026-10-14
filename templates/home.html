@@ -27,5 +27,5 @@
 <div class="cards">{% for s in steels if s.search_volume %}{{ steel_card(s) }}{% endfor %}</div>
 
 <h2>Featured knives</h2>
-<div class="cards">{% for k in featured %}<a class="card" href="/knife/{{ k.id }}/"><span class="card-title">{{ k.name }}</span><span class="card-meta">{{ k.steel.short }} · {{ k.blade_length_in|fmt }}" blade · {{ k.weight_oz|fmt }} oz</span><span class="card-text">{{ k.lock_type }}{% if k.msrp_usd %}, list price ${{ k.msrp_usd|fmt }}{% endif %}</span></a>{% endfor %}</div>
+<div class="cards">{% for k in featured %}<a class="card" href="/knife/{{ k.id }}/"><span class="card-title">{{ k.name }}</span><span class="card-meta">{{ k.steel.short }} · {{ k.blade_length_in|fmt }}" blade · {{ k.weight_oz|fmt }} oz</span><span class="card-text">{{ k.lock_type }}{% if k.msrp_usd %}, list price ${{ k.msrp_usd|money }}{% endif %}</span></a>{% endfor %}</div>
 {% endblock %}

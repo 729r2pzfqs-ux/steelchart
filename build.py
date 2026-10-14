@@ -84,12 +84,29 @@ def lock_name(lock: str | None) -> str | None:
     return lock.lower()
 
 
+def is_fixed(k: dict) -> bool:
+    return "Fixed" in (k.get("category") or "")
+
+
 def lock_phrase(lock: str | None) -> str:
     """Lock with its indefinite article: 'a compression lock', 'an AXIS lock', 'an ABLE Lock'."""
     name = lock_name(lock)
     if not name:
         return ""
     return f"{'an' if name[0].lower() in 'aeiou' else 'a'} {name}"
+
+
+def money(v) -> str:
+    """List price: whole dollars or exactly two decimals."""
+    if v is None:
+        return "—"
+    return str(int(v)) if float(v).is_integer() else f"{v:.2f}"
+
+
+def knife_kind(k: dict) -> str | None:
+    """What a knife without a lock is: 'kitchen knife', 'fixed blade' or None (a folder with an unstated lock)."""
+    cat = k.get("category") or ""
+    return "kitchen knife" if "Kitchen" in cat else "fixed blade" if "Fixed" in cat else None
 
 
 def level(v: int) -> str:
@@ -310,7 +327,8 @@ class Site:
         self.C = {c["id"]: c for c in self.cats}
         self.B = {b["name"]: b for b in self.brands}
         for k in self.knives:
-            k["name"] = f"{k['brand']} {model_name(k)}"
+            m = model_name(k)
+            k["name"] = m if m.startswith(k["brand"]) else f"{k['brand']} {m}"
             k["steel"] = self.S[k["steel_id"]]
             k["brand_id"] = self.B[k["brand"]]["id"]
             k["links"] = knife_links(k)
@@ -340,6 +358,9 @@ class Site:
                                trim_blocks=True, lstrip_blocks=True, extensions=["jinja2.ext.do"])
         self.env.filters["fmt"] = fmt
         self.env.filters["lock_phrase"] = lock_phrase
+        self.env.filters["is_fixed"] = is_fixed
+        self.env.filters["money"] = money
+        self.env.filters["kind"] = knife_kind
         self.env.filters["level"] = level
         self.env.globals.update(svg=svg, ad=self.ad, asset=asset, site_url=SITE_URL, site_name=SITE_NAME, email=CONTACT_EMAIL,
                                 adsense_pub=ADSENSE_PUB, ga_id=GA_ID, og_image=OG_IMAGE, year_now=TODAY.year, rating_keys=RATING_KEYS,
@@ -481,8 +502,9 @@ class Site:
         for k in self.knives:
             s = k["steel"]
             title = f"{k['name']} Specs & Steel"
-            desc = (f"{k['name']}: {s['short']} steel, {fmt(k['blade_length_in'])}\" blade, {fmt(k['weight_oz'])} oz, "
-                    f"{lock_name(k['lock_type']) or 'fixed blade'}. Full specs, steel ratings and where to buy.")
+            bits = [f"{fmt(k['blade_length_in'])}\" blade"] + ([f"{fmt(k['weight_oz'])} oz"] if k.get("weight_oz") else []) + \
+                   ([lock_name(k["lock_type"])] if k.get("lock_type") else [knife_kind(k)] if knife_kind(k) else [])
+            desc = f"{k['name']}: {s['short']} steel, {', '.join(bits)}. Full specs, steel ratings and where to buy."
             same_steel = [x for x in self.knives if x["steel_id"] == k["steel_id"] and x["id"] != k["id"]]
             same_brand = [x for x in self.knives if x["brand"] == k["brand"] and x["id"] != k["id"]]
             price = k.get("msrp_usd") or 0
@@ -490,7 +512,7 @@ class Site:
                              x.get("msrp_usd") and abs(x["msrp_usd"] - price) <= 0.3 * price][:5]
             prod = {"@context": "https://schema.org", "@type": "Product", "name": k["name"],
                     "brand": {"@type": "Brand", "name": k["brand"]}, "material": s["name"],
-                    "category": "Pocket knife" if "Fixed" not in (k.get("category") or "") else "Fixed-blade knife",
+                    "category": "Fixed-blade knife" if is_fixed(k) else "Pocket knife",
                     "additionalProperty": [{"@type": "PropertyValue", "name": n, "value": v} for n, v in (
                         ("Blade length (in)", k.get("blade_length_in")), ("Weight (oz)", k.get("weight_oz")),
                         ("Lock", k.get("lock_type")), ("Handle", k.get("handle_material"))) if v],

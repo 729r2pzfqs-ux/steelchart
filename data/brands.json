@@ -52,5 +52,143 @@
   "name": "Buck",
   "country": "USA",
   "description": "Idaho maker of the Buck 110 Folding Hunter, made since 1963."
+ },
+ {
+  "id": "microtech",
+  "name": "Microtech",
+  "country": "USA",
+  "description": "North Carolina maker best known for its Ultratech and UTX out-the-front automatics, now built with B\u00f6hler M390MK blades."
+ },
+ {
+  "id": "we-knife",
+  "name": "WE Knife",
+  "country": "China",
+  "description": "Yangjiang-based premium brand (parent of Civivi) producing titanium-handled folders in M390 and CPM 20CV."
+ },
+ {
+  "id": "demko",
+  "name": "Demko",
+  "country": "USA",
+  "description": "Andrew Demko's Pennsylvania company, maker of the Shark Lock AD20.5 series, with production knives manufactured in Taiwan."
+ },
+ {
+  "id": "fallkniven",
+  "name": "F\u00e4llkniven",
+  "country": "Sweden",
+  "description": "Boden-based Swedish company whose F1 pilot survival knife has been issued to the Swedish Air Force since 1995."
+ },
+ {
+  "id": "pro-tech",
+  "name": "Pro-Tech",
+  "country": "USA",
+  "description": "Santa Fe Springs, California maker of American-made automatic knives such as the Godfather, Malibu and TR-series."
+ },
+ {
+  "id": "cold-steel",
+  "name": "Cold Steel",
+  "country": "USA",
+  "description": "Ventura, California-based maker of hard-use fixed blades, folders and swords, known for the Tri-Ad lock and the SRK and Trail Master lines."
+ },
+ {
+  "id": "boker",
+  "name": "B\u00f6ker",
+  "country": "Germany",
+  "description": "Solingen cutlery house founded in 1869 whose B\u00f6ker Germany line is made in Solingen; B\u00f6ker Plus and Magnum are imported sub-brands."
+ },
+ {
+  "id": "boker-plus",
+  "name": "B\u00f6ker Plus",
+  "country": "Germany",
+  "description": "B\u00f6ker's value line, designed in Solingen and produced outside Germany (mostly Asia), covering designer-collaboration folders and fixed blades."
+ },
+ {
+  "id": "fox-knives",
+  "name": "Fox Knives",
+  "country": "Italy",
+  "description": "Maniago-based cutler (Oreste Frati S.r.l.) known for Italian-made folders, karambits and tactical knives, many in B\u00f6hler N690Co."
+ },
+ {
+  "id": "rockstead",
+  "name": "Rockstead",
+  "country": "Japan",
+  "description": "Sakai, Osaka maker of mirror-polished, convex-ground high-end folders built around ZDP-189 and other Japanese super steels."
+ },
+ {
+  "id": "esee",
+  "name": "ESEE",
+  "country": "USA",
+  "description": "Idaho-based maker of 1095 carbon steel survival and bushcraft fixed blades backed by an unconditional lifetime warranty."
+ },
+ {
+  "id": "ontario-knife-company",
+  "name": "Ontario Knife Company",
+  "country": "USA",
+  "description": "Long-running US knife maker (RAT folders, Air Force Survival Knife) whose RAT series is produced in Taiwan."
+ },
+ {
+  "id": "sog",
+  "name": "SOG",
+  "country": "USA",
+  "description": "Oregon-based brand founded in 1986 around the SEAL and SEAL Pup fixed blades, now making folders, fixed blades and multi-tools."
+ },
+ {
+  "id": "crkt",
+  "name": "CRKT",
+  "country": "USA",
+  "description": "Columbia River Knife & Tool, an Oregon company producing designer-collaboration folders and fixed blades, mostly made in Taiwan and China."
+ },
+ {
+  "id": "bradford-knives",
+  "name": "Bradford Knives",
+  "country": "USA",
+  "description": "Small US maker best known for the Guardian series of compact fixed blades offered in a range of steels."
+ },
+ {
+  "id": "winkler-knives",
+  "name": "Winkler Knives",
+  "country": "USA",
+  "description": "Boone, North Carolina shop founded by bladesmith Daniel Winkler, making 80CrV2 fixed blades for military and outdoor use."
+ },
+ {
+  "id": "shun",
+  "name": "Shun",
+  "country": "Japan",
+  "description": "Kai's premium kitchen knife brand, handcrafted in Seki City with VG-MAX, SG2 and Dual Core blades."
+ },
+ {
+  "id": "miyabi",
+  "name": "Miyabi",
+  "country": "Japan",
+  "description": "Zwilling's Seki-made Japanese kitchen knife brand, built around SG2 (MC63) and FC61 powder-steel cores."
+ },
+ {
+  "id": "sukenari",
+  "name": "Sukenari",
+  "country": "Japan",
+  "description": "Toyama Prefecture kitchen knife maker known for working with hard powder steels such as HAP40 and ZDP-189."
+ },
+ {
+  "id": "hatsukokoro",
+  "name": "Hatsukokoro",
+  "country": "Japan",
+  "description": "Japanese kitchen knife brand that commissions blades from workshops in Seki, Tosa and Sanjo in a range of carbon and high-speed steels."
+ },
+ {
+  "id": "yoshikane",
+  "name": "Yoshikane",
+  "country": "Japan",
+  "description": "Sanjo City hammon workshop known for thin, hammer-forged stainless-clad White #2 and SKD gyutos."
+ },
+ {
+  "id": "masamoto",
+  "name": "Masamoto",
+  "country": "Japan",
+  "description": "Tokyo knife maker founded in the 1800s whose KS-series White #2 gyuto is a benchmark among professional chefs."
+ },
+ {
+  "id": "sakai-takayuki",
+  "name": "Sakai Takayuki",
+  "country": "Japan",
+  "description": "Sakai, Osaka cutlery house (Aoki Hamono) producing hand-forged traditional and modern kitchen knives."
  }
 ]
