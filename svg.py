@@ -31,10 +31,10 @@ def _v(x: float) -> str:
 
 def radar(sets: list[tuple[str, dict, str]], title: str) -> Markup:
     """sets: [(label, ratings, css colour var)], 1 or 2 entries. 4 axes on a 1-10 scale."""
-    cx, cy, r = 200, 175, 115
+    cx, cy, r = 200, 185, 115
     n = len(AXES)
     pt = lambda i, v: (cx + r * v / 10 * math.sin(2 * math.pi * i / n), cy - r * v / 10 * math.cos(2 * math.pi * i / n))
-    out = [f'<svg viewBox="-95 0 590 {360 if len(sets) > 1 else 340}" width="100%" role="img" aria-labelledby="rt rd" class="chart radar">',
+    out = [f'<svg viewBox="-60 0 520 {410 if len(sets) > 1 else 375}" width="100%" role="img" aria-labelledby="rt rd" class="chart radar">',
            f'<title id="rt">{escape(title)}</title>',
            '<desc id="rd">' + escape("; ".join(f"{lab}: " + ", ".join(f"{name} {rt[k]}/10" for k, name in AXES)
                                                for lab, rt, _ in sets)) + "</desc>"]
@@ -44,11 +44,20 @@ def radar(sets: list[tuple[str, dict, str]], title: str) -> Markup:
     for i, (key, name) in enumerate(AXES):
         x, y = pt(i, 10)
         out.append(f'<line x1="{cx}" y1="{cy}" x2="{_f(x)}" y2="{_f(y)}" stroke="var(--grid)" stroke-width="1"/>')
-        lx, ly = pt(i, 12.6)
-        anchor = "middle" if abs(lx - cx) < 5 else ("start" if lx > cx else "end")
+        # label block: name (wrapped to two lines on the side axes when long) then the values
         vals = " / ".join(str(rt[key]) for _, rt, _ in sets)
-        out.append(f'<text x="{_f(lx)}" y="{_f(ly + 4)}" text-anchor="{anchor}" class="ax">{name}</text>')
-        out.append(f'<text x="{_f(lx)}" y="{_f(ly + 19)}" text-anchor="{anchor}" class="axv">{vals}</text>')
+        words = name.split(" ")
+        lines = [" ".join(words[:-1]), words[-1]] if i % 2 and len(words) > 1 else [name]
+        if i == 0:
+            lx, anchor, y0 = cx, "middle", cy - r - 36
+        elif i == 2:
+            lx, anchor, y0 = cx, "middle", cy + r + 32
+        else:
+            lx, anchor = (cx + r + 14, "start") if i == 1 else (cx - r - 14, "end")
+            y0 = cy - 12 * len(lines)
+        for j, ln in enumerate(lines):
+            out.append(f'<text x="{_f(lx)}" y="{_f(y0 + 23 * j)}" text-anchor="{anchor}" class="ax">{ln}</text>')
+        out.append(f'<text x="{_f(lx)}" y="{_f(y0 + 23 * len(lines))}" text-anchor="{anchor}" class="axv">{vals}</text>')
     for lab, rt, col in sets:
         pts = " ".join(f"{_f(x)},{_f(y)}" for x, y in (pt(i, rt[k]) for i, (k, _) in enumerate(AXES)))
         out.append(f'<polygon points="{pts}" fill="var({col})" fill-opacity="0.28" stroke="var({col})" stroke-width="2.5"/>')
@@ -56,11 +65,11 @@ def radar(sets: list[tuple[str, dict, str]], title: str) -> Markup:
             x, y = pt(i, rt[k])
             out.append(f'<circle cx="{_f(x)}" cy="{_f(y)}" r="3.5" fill="var({col})"/>')
     if len(sets) > 1:
-        lx = 200 - 90 * (len(sets) - 1)
+        lx = 200 - 100 * (len(sets) - 1)
         for j, (lab, _, col) in enumerate(sets):
-            x = lx + j * 180
-            out.append(f'<rect x="{x - 70}" y="333" width="14" height="14" rx="3" fill="var({col})"/>'
-                       f'<text x="{x - 50}" y="345" class="lg">{escape(lab)}</text>')
+            x = lx + j * 200
+            out.append(f'<rect x="{x - 80}" y="383" width="18" height="18" rx="3" fill="var({col})"/>'
+                       f'<text x="{x - 54}" y="399" class="lg">{escape(lab)}</text>')
     out.append("</svg>")
     return Markup("".join(out))
 
@@ -72,7 +81,7 @@ def composition(sets: list[tuple[str, dict, str]], title: str) -> Markup:
     scale_max = 5 if vmax <= 5 else 10 if vmax <= 10 else 15 if vmax <= 15 else 25
     bar_h = 14 if len(sets) == 1 else 11
     row_h = bar_h * len(sets) + 12
-    left, width = 108, 230
+    left, width = 128, 214
     h = 30 + row_h * len(keys) + (26 if len(sets) > 1 else 6)
     desc = "; ".join(f"{lab}: " + ", ".join(f"{e} {c[e]}%" for e in keys if c.get(e)) for lab, c, _ in sets)
     out = [f'<svg viewBox="0 0 400 {h}" width="100%" role="img" aria-labelledby="ct cd" class="chart comp">',
@@ -124,18 +133,19 @@ def hrc_gauge(sets: list[tuple[str, int, int, str]], title: str) -> Markup:
 
 def diff_chart(a_name: str, a: dict, b_name: str, b: dict) -> Markup:
     """Diverging bars: rating difference per property; right = steel A better, left = steel B better."""
-    mid, unit = 300, 16
-    h = 34 + 32 * len(AXES)
+    mid, unit = 235, 16
+    h = 34 + 50 * len(AXES)
     out = [f'<svg viewBox="0 0 470 {h}" width="100%" role="img" aria-labelledby="dt dd" class="chart diff">',
            f'<title id="dt">{escape(a_name)} vs {escape(b_name)}: rating differences</title>',
            '<desc id="dd">' + escape("; ".join(f"{n}: {a_name} {a[k]}, {b_name} {b[k]}" for k, n in AXES)) + "</desc>",
-           f'<text x="{mid - 8}" y="14" text-anchor="end" class="tick">← {escape(b_name)} better</text>',
-           f'<text x="{mid + 8}" y="14" class="tick">{escape(a_name)} better →</text>',
-           f'<line x1="{mid}" y1="22" x2="{mid}" y2="{h - 4}" stroke="var(--fg)" stroke-width="1.2"/>']
+           f'<text x="{mid - 8}" y="18" text-anchor="end" class="tick">← {escape(b_name)} better</text>',
+           f'<text x="{mid + 8}" y="18" class="tick">{escape(a_name)} better →</text>',
+           f'<line x1="{mid}" y1="26" x2="{mid}" y2="{h - 4}" stroke="var(--fg)" stroke-width="1.2"/>']
     for i, (k, n) in enumerate(AXES):
-        y = 28 + 32 * i
+        y = 34 + 50 * i
         d = a[k] - b[k]
-        out.append(f'<text x="4" y="{y + 15}" class="el">{n}</text>')
+        out.append(f'<text x="4" y="{y + 14}" class="el">{n}</text>')
+        y += 20
         if d:
             w = abs(d) * unit
             xx = mid if d > 0 else mid - w
