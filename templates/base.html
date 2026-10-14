@@ -23,7 +23,7 @@
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="manifest" href="/site.webmanifest">
 <meta name="theme-color" content="#1b2230">
-<link rel="stylesheet" href="/static/style.css?v=1">
+<link rel="stylesheet" href="{{ asset('style.css') }}">
 <script>
 (function(){try{var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
 window.dataLayer = window.dataLayer || [];
@@ -72,6 +72,6 @@ gtag('consent', 'default', {'analytics_storage': 'granted', 'ad_storage': 'grant
 <p class="fine">Steel ratings are relative 1-10 scores across knife steels, compiled from manufacturer datasheets and published test data; see <a href="/about/">methodology</a>. Some links are affiliate links: we may earn a commission on purchases at no extra cost to you. &copy; {{ year_now }} SteelChart.org · <a href="mailto:{{ email }}">{{ email }}</a></p>
 </div>
 </footer>
-<script src="/static/site.js?v=1" defer></script>
+<script src="{{ asset('site.js') }}" defer></script>
 </body>
 </html>

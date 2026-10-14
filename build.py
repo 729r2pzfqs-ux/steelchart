@@ -12,6 +12,7 @@ Pages: / , /chart/, /steel/, /steel/<id>/, /compare/, /compare/<a>-vs-<b>/ (+ re
 """
 from __future__ import annotations
 
+import hashlib
 import json
 import re
 import shutil
@@ -81,6 +82,12 @@ def fit_desc(d: str, n: int = 158) -> str:
     cut = d[:n]
     dot = cut.rfind(". ")
     return cut[:dot + 1] if dot >= 90 else cut[:n - 1].rsplit(" ", 1)[0].rstrip(",;:") + "…"
+
+
+def asset(name: str) -> str:
+    """URL for a file in static/ with a content hash, so browsers refetch it only when it changes."""
+    h = hashlib.sha256((ROOT / "static" / name).read_bytes()).hexdigest()[:10]
+    return f"/static/{name}?v={h}"
 
 
 def model_name(k: dict) -> str:
@@ -312,7 +319,7 @@ class Site:
                                trim_blocks=True, lstrip_blocks=True, extensions=["jinja2.ext.do"])
         self.env.filters["fmt"] = fmt
         self.env.filters["level"] = level
-        self.env.globals.update(svg=svg, ad=self.ad, site_url=SITE_URL, site_name=SITE_NAME, email=CONTACT_EMAIL,
+        self.env.globals.update(svg=svg, ad=self.ad, asset=asset, site_url=SITE_URL, site_name=SITE_NAME, email=CONTACT_EMAIL,
                                 adsense_pub=ADSENSE_PUB, ga_id=GA_ID, og_image=OG_IMAGE, year_now=TODAY.year, rating_keys=RATING_KEYS,
                                 rating_names=RATING_NAMES, cats=self.cats, cat_by_id=self.C, steels_by_id=self.S,
                                 steel_id_by_name={s['name']: s['id'] for s in self.steels},
