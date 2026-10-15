@@ -39,7 +39,7 @@ ADSENSE_PUB = "ca-pub-5861928596436289"
 GA_ID = "G-1B8ZG0EDPL"            # GA4 measurement id; GA tags are omitted while empty
 AD_SLOTS: dict[str, str] = {}    # TODO: AdSense slot ids {"inline": "...", "side": "..."}; empty = auto ads only
 TODAY = date.today()
-DATA_UPDATED = "2026-10-14"   # last data/content change: dateModified, sitemap lastmod, "Updated" lines
+DATA_UPDATED = "2026-10-15"   # last data/content change: dateModified, sitemap lastmod, "Updated" lines
 PUBLISHED = "2026-10-14"      # site launch: datePublished
 
 RATING_KEYS = [k for k, _ in svg.AXES]
@@ -510,18 +510,17 @@ class Site:
             price = k.get("msrp_usd") or 0
             similar_price = [x for x in self.knives if x["id"] != k["id"] and x not in same_brand and price and
                              x.get("msrp_usd") and abs(x["msrp_usd"] - price) <= 0.3 * price][:5]
-            prod = {"@context": "https://schema.org", "@type": "Product", "name": k["name"],
-                    "brand": {"@type": "Brand", "name": k["brand"]}, "material": s["name"],
-                    "category": "Fixed-blade knife" if is_fixed(k) else "Pocket knife",
-                    "additionalProperty": [{"@type": "PropertyValue", "name": n, "value": v} for n, v in (
-                        ("Blade length (in)", k.get("blade_length_in")), ("Weight (oz)", k.get("weight_oz")),
-                        ("Lock", k.get("lock_type")), ("Handle", k.get("handle_material"))) if v],
-                    "offers": {"@type": "Offer", "price": k.get("msrp_usd"), "priceCurrency": "USD",
-                               "url": k.get("verified_url")}}
-            # Google needs an offer for a valid Product; without a list price, leave the Product off
+            # SteelChart sells nothing, so Product/Offer markup is wrong here: Google treats an Offer as a merchant
+            # listing and asks for image, shipping, returns and availability. A spec page is a TechArticle about the knife.
+            ld = [{"@context": "https://schema.org", "@type": "TechArticle", "headline": f"{k['name']} specs and steel",
+                   "description": desc, "about": {"@type": "Thing", "name": k["name"]},
+                   "author": {"@type": "Organization", "name": SITE_NAME},
+                   "publisher": {"@type": "Organization", "name": SITE_NAME, "logo": SITE_URL + "/favicon-512.png"},
+                   "image": OG_IMAGE, "datePublished": PUBLISHED, "dateModified": DATA_UPDATED,
+                   "mainEntityOfPage": f"{SITE_URL}/knife/{k['id']}/"}]
             self.render("knife.html", f"/knife/{k['id']}/", title, desc,
                         crumbs=[("/", "Home"), ("/knife/", "Knives"), (f"/knife/{k['id']}/", k["name"])],
-                        jsonld=[prod] if k.get("msrp_usd") else [], priority=0.7, k=k, s=s, same_steel=same_steel, same_brand=same_brand,
+                        jsonld=ld, priority=0.7, k=k, s=s, same_steel=same_steel, same_brand=same_brand,
                         similar_price=similar_price, brand=self.B[k["brand"]], checked="2026-10-14",
                         steel_comps=s["comparisons"][:5])
             self.search.append({"t": k["name"], "u": f"/knife/{k['id']}/", "d": f"{s['short']} steel", "k": k["model"]})
