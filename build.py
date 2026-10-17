@@ -36,6 +36,8 @@ SITE_NAME = "SteelChart"
 CONTACT_EMAIL = "info@steelchart.org"
 OG_IMAGE = SITE_URL + "/static/og-image.png"   # 1200x630, made by scripts/make_og.py
 ADSENSE_PUB = "ca-pub-5861928596436289"
+# Ahrefs Web Analytics (no cookies). Loaded last in <head>, after consent defaults, AdSense and gtag. Blank = tag omitted.
+AHREFS_KEY = "K+ot4Z429m5axBwZGk/HVg"
 GA_ID = "G-1B8ZG0EDPL"            # GA4 measurement id; GA tags are omitted while empty
 AD_SLOTS: dict[str, str] = {}    # TODO: AdSense slot ids {"inline": "...", "side": "..."}; empty = auto ads only
 TODAY = date.today()
@@ -363,7 +365,7 @@ class Site:
         self.env.filters["kind"] = knife_kind
         self.env.filters["level"] = level
         self.env.globals.update(svg=svg, ad=self.ad, asset=asset, site_url=SITE_URL, site_name=SITE_NAME, email=CONTACT_EMAIL,
-                                adsense_pub=ADSENSE_PUB, ga_id=GA_ID, og_image=OG_IMAGE, year_now=TODAY.year, rating_keys=RATING_KEYS,
+                                adsense_pub=ADSENSE_PUB, ga_id=GA_ID, ahrefs_key=AHREFS_KEY, og_image=OG_IMAGE, year_now=TODAY.year, rating_keys=RATING_KEYS,
                                 rating_names=RATING_NAMES, cats=self.cats, cat_by_id=self.C, steels_by_id=self.S,
                                 steel_id_by_name={s['name']: s['id'] for s in self.steels},
                                 brand_id_by_name={**{b['name'].removesuffix(' Knives'): b['id'] for b in self.brands},
