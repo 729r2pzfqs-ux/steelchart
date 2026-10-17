@@ -35,7 +35,12 @@ gtag('consent', 'default', {
 });
 gtag('consent', 'default', {'analytics_storage': 'granted', 'ad_storage': 'granted', 'ad_user_data': 'granted', 'ad_personalization': 'granted'});
 </script>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={{ adsense_pub }}" crossorigin="anonymous"></script>
+<script>
+/* AdSense (~225 KB plus ad requests) loads after the page's load event so it doesn't slow first paint or page load. */
+(function(){function tags(){var s=document.createElement('script');s.async=true;s.crossOrigin='anonymous';
+s.src='https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={{ adsense_pub }}';document.head.appendChild(s);}
+if(document.readyState==='complete')setTimeout(tags,0);else window.addEventListener('load',function(){setTimeout(tags,0);});})();
+</script>
 {% if ga_id %}<script async src="https://www.googletagmanager.com/gtag/js?id={{ ga_id }}"></script>
 <script>gtag('js', new Date()); gtag('config', '{{ ga_id }}');</script>
 {% endif %}

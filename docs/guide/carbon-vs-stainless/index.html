@@ -34,7 +34,12 @@ gtag('consent', 'default', {
 });
 gtag('consent', 'default', {'analytics_storage': 'granted', 'ad_storage': 'granted', 'ad_user_data': 'granted', 'ad_personalization': 'granted'});
 </script>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5861928596436289" crossorigin="anonymous"></script>
+<script>
+/* AdSense (~225 KB plus ad requests) loads after the page's load event so it doesn't slow first paint or page load. */
+(function(){function tags(){var s=document.createElement('script');s.async=true;s.crossOrigin='anonymous';
+s.src='https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5861928596436289';document.head.appendChild(s);}
+if(document.readyState==='complete')setTimeout(tags,0);else window.addEventListener('load',function(){setTimeout(tags,0);});})();
+</script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-1B8ZG0EDPL"></script>
 <script>gtag('js', new Date()); gtag('config', 'G-1B8ZG0EDPL');</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "author": {"@type": "Organization", "name": "SteelChart"}, "dateModified": "2026-10-15", "datePublished": "2026-10-14", "description": "Carbon steels average 1/10 for corrosion resistance against 7.4/10 for stainless, but sharpen more easily. Full comparison.", "headline": "Carbon vs Stainless Steel for Knives", "image": "https://steelchart.org/static/og-image.png", "mainEntityOfPage": "https://steelchart.org/guide/carbon-vs-stainless/", "publisher": {"@type": "Organization", "logo": "https://steelchart.org/favicon-512.png", "name": "SteelChart"}}</script>

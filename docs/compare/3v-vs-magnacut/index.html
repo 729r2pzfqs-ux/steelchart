@@ -34,7 +34,12 @@ gtag('consent', 'default', {
 });
 gtag('consent', 'default', {'analytics_storage': 'granted', 'ad_storage': 'granted', 'ad_user_data': 'granted', 'ad_personalization': 'granted'});
 </script>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5861928596436289" crossorigin="anonymous"></script>
+<script>
+/* AdSense (~225 KB plus ad requests) loads after the page's load event so it doesn't slow first paint or page load. */
+(function(){function tags(){var s=document.createElement('script');s.async=true;s.crossOrigin='anonymous';
+s.src='https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5861928596436289';document.head.appendChild(s);}
+if(document.readyState==='complete')setTimeout(tags,0);else window.addEventListener('load',function(){setTimeout(tags,0);});})();
+</script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-1B8ZG0EDPL"></script>
 <script>gtag('js', new Date()); gtag('config', 'G-1B8ZG0EDPL');</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "acceptedAnswer": {"@type": "Answer", "text": "CPM 3V is tougher and is easier to sharpen; MagnaCut holds an edge longer and resists corrosion better. Choose CPM 3V for toughness, MagnaCut for corrosion resistance."}, "name": "Which is better, CPM 3V or MagnaCut?"}, {"@type": "Question", "acceptedAnswer": {"@type": "Answer", "text": "CPM 3V is typically run at 58\u201362 HRC and MagnaCut at 61\u201364 HRC."}, "name": "Which is harder, CPM 3V or MagnaCut?"}, {"@type": "Question", "acceptedAnswer": {"@type": "Answer", "text": "MagnaCut (9/10). CPM 3V is a powder metallurgy tool steel; MagnaCut is a powder metallurgy stainless steel."}, "name": "Is CPM 3V or MagnaCut more rust resistant?"}]}</script>

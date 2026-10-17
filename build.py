@@ -115,13 +115,27 @@ def level(v: int) -> str:
     return "very high" if v >= 9 else "high" if v >= 7 else "moderate" if v >= 5 else "low" if v >= 3 else "very low"
 
 
+def brand_desc(b: dict, steels: str) -> str:
+    """Answer-first brand description: which models, in which steels."""
+    ks = b["knives"]
+    if len(ks) == 1:
+        k, s = ks[0], ks[0]["steel"]
+        r = s["ratings"]
+        return (f"{b['name']} on SteelChart: the {model_name(k)} in {s['short']}, rated {r['edge_retention']}/10 edge retention, "
+                f"{r['toughness']}/10 toughness and {r['corrosion_resistance']}/10 corrosion resistance. Specs and where to buy.")
+    models = ", ".join(model_name(k) for k in ks[:4]) + (" and more" if len(ks) > 4 else "")
+    return (f"{b['name']} knives on SteelChart: {models}, in {steels}. Compare blade length, weight, lock, "
+            f"list price and steel ratings, with links to buy.")
+
+
 def fit_desc(d: str, n: int = 158) -> str:
     d = re.sub(r"\s+", " ", d).strip()
     if len(d) <= n:
         return d
     cut = d[:n]
     dot = cut.rfind(". ")
-    return cut[:dot + 1] if dot >= 90 else cut[:n - 1].rsplit(" ", 1)[0].rstrip(",;:") + "…"
+    # keep whole sentences only if that still leaves an informative (>= 120 char) description
+    return cut[:dot + 1] if dot + 1 >= 120 else cut[:n - 1].rsplit(" ", 1)[0].rstrip(",;:") + "…"
 
 
 def asset(name: str) -> str:
@@ -438,7 +452,7 @@ class Site:
             r = s["ratings"]
             desc = (f"{s['short']} is a {CAT_PHRASE[s['category']]} ({s['hrc_min']}-{s['hrc_max']} HRC) with "
                     f"{r['edge_retention']}/10 edge retention and {r['corrosion_resistance']}/10 corrosion resistance. "
-                    f"Composition, ratings and knives.")
+                    f"Full composition, ratings, sharpening tips and knives that use it.")
             faq = steel_faq(s)
             ld = [{"@context": "https://schema.org", "@type": "TechArticle", "headline": f"{s['name']} steel",
                    "description": steel_answer(s), "about": {"@type": "Thing", "name": s["name"]},
@@ -487,7 +501,7 @@ class Site:
                   {"@context": "https://schema.org", "@type": "ItemList", "name": c["title"], "itemListElement": [
                       {"@type": "ListItem", "position": 1, "name": a["name"], "url": f"{SITE_URL}/steel/{a['id']}/"},
                       {"@type": "ListItem", "position": 2, "name": b["name"], "url": f"{SITE_URL}/steel/{b['id']}/"}]}]
-            self.render("compare.html", f"/compare/{c['id']}/", title, f"{c['title']}: {main} Composition, HRC, ratings and knives in each.",
+            self.render("compare.html", f"/compare/{c['id']}/", title, f"{c['title']}: {main} Side-by-side composition, HRC range, 1-10 ratings and the knives made in each steel.",
                         crumbs=[("/", "Home"), ("/compare/", "Compare"), (f"/compare/{c['id']}/", c["title"])],
                         jsonld=ld, priority=0.8, c=c, a=a, b=b, verdict=main, choose=choose,
                         breakdown=property_breakdown(a, b), related=related[:8], faq=faq)
@@ -506,7 +520,9 @@ class Site:
             title = f"{k['name']} Specs & Steel"
             bits = [f"{fmt(k['blade_length_in'])}\" blade"] + ([f"{fmt(k['weight_oz'])} oz"] if k.get("weight_oz") else []) + \
                    ([lock_name(k["lock_type"])] if k.get("lock_type") else [knife_kind(k)] if knife_kind(k) else [])
-            desc = f"{k['name']}: {s['short']} steel, {', '.join(bits)}. Full specs, steel ratings and where to buy."
+            r = s["ratings"]
+            desc = (f"{k['name']}: {s['short']} steel, {', '.join(bits)}. {s['short']} rates {r['edge_retention']}/10 for edge "
+                    f"retention and {r['corrosion_resistance']}/10 for corrosion resistance. Full specs and where to buy.")
             same_steel = [x for x in self.knives if x["steel_id"] == k["steel_id"] and x["id"] != k["id"]]
             same_brand = [x for x in self.knives if x["brand"] == k["brand"] and x["id"] != k["id"]]
             price = k.get("msrp_usd") or 0
@@ -529,13 +545,12 @@ class Site:
 
     def brand_pages(self):
         self.render("brand_index.html", "/brand/", "Knife Brands and the Steels They Use",
-                    f"{len(self.brands)} knife brands and the steels in their popular models, from Spyderco and Benchmade "
-                    f"to Civivi and Buck.", crumbs=[("/", "Home"), ("/brand/", "Brands")], priority=0.6, brands=self.brands)
+                    f"{len(self.brands)} knife brands and the blade steels in their popular models, from Spyderco and Benchmade to Civivi "
+                    f"and Buck, with every knife's specs and steel ratings.", crumbs=[("/", "Home"), ("/brand/", "Brands")], priority=0.6, brands=self.brands)
         for b in self.brands:
             steels = ", ".join(s["short"] for s in b["steels"])
             self.render("brand.html", f"/brand/{b['id']}/", f"{b['name']} Knives: Steels & Models",
-                        f"{b['name']} knives on SteelChart: {len(b['knives'])} model{'s' if len(b['knives']) != 1 else ''} "
-                        f"in {steels}. Specs, steel ratings and where to buy.",
+                        brand_desc(b, steels),
                         crumbs=[("/", "Home"), ("/brand/", "Brands"), (f"/brand/{b['id']}/", b["name"])],
                         priority=0.6, b=b)
             self.search.append({"t": f"{b['name']} knives", "u": f"/brand/{b['id']}/", "d": "Brand"})
@@ -593,19 +608,19 @@ class Site:
                         guides=self.guides, updated=DATA_UPDATED)
             self.search.append({"t": title, "u": f"/guide/{slug}/", "d": "Guide"})
         self.render("guide_index.html", "/guide/", "Knife Steel Guides",
-                    "Guides to choosing a knife steel: rankings by property, steel types, carbon vs stainless and the best steels for EDC.",
+                    "Knife steel guides built on the SteelChart data: steels ranked by property, steel types explained, carbon vs stainless, and the best steels for EDC knives.",
                     crumbs=[("/", "Home"), ("/guide/", "Guides")], priority=0.6, guides=self.guides)
 
     def static_pages(self):
         for slug, title, desc in (
-                ("about", "About SteelChart", "About SteelChart: where the knife steel data comes from, how the 1-10 ratings work and how to report an error."),
-                ("privacy", "Privacy Policy", "SteelChart privacy policy: what data is collected, cookies, advertising and analytics."),
-                ("terms", "Terms of Use", "SteelChart terms of use: information only, no warranty, trademarks and affiliate links."),
-                ("affiliate-disclosure", "Affiliate Disclosure", "SteelChart affiliate disclosure: how buy links work and how they affect (and do not affect) our data.")):
+                ("about", "About SteelChart", "SteelChart is a free knife steel reference. Compositions come from maker datasheets; ratings are relative 1-10 scores. How the data works and how to report errors."),
+                ("privacy", "Privacy Policy", "SteelChart collects no personal data and sets no cookies of its own. Google AdSense, Google Analytics and Ahrefs Web Analytics are explained here, with opt-outs."),
+                ("terms", "Terms of Use", "SteelChart's knife steel data is for general reference only, with no warranty. Terms covering knife laws, trademarks, third-party content and affiliate links."),
+                ("affiliate-disclosure", "Affiliate Disclosure", "Some SteelChart buy links are affiliate links that may earn a commission at no cost to you. Commissions never change steel ratings, rankings or verdicts.")):
             self.render(f"page_{slug.replace('-', '_')}.html", f"/{slug}/", f"{title} | {SITE_NAME}" if len(title) < 45 and SITE_NAME not in title else title,
                         desc, crumbs=[("/", "Home"), (f"/{slug}/", title)], priority=0.3, heading=title,
                         updated=DATA_UPDATED, steel_count=len(self.steels))
-        self.render("404.html", "/404.html", f"Page Not Found | {SITE_NAME}", "Page not found.",
+        self.render("404.html", "/404.html", f"Page Not Found | {SITE_NAME}", "This SteelChart page doesn't exist. Search for a steel or knife, open the knife steel chart, or browse steel comparisons, knives and guides.",
                     crumbs=[("/", "Home"), ("/404.html", "Page not found")])
 
     def finish(self):
