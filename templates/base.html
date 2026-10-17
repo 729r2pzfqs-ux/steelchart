@@ -44,6 +44,8 @@ gtag('consent', 'default', {'analytics_storage': 'granted', 'ad_storage': 'grant
 {% if ahrefs_key %}<script src="https://analytics.ahrefs.com/analytics.js" data-key="{{ ahrefs_key }}" async></script>
 {% endif %}</head>
 <body>
+<!-- Cloudflare email obfuscation off: its /cdn-cgi/l/email-protection links 404 on GitHub Pages -->
+<!--email_off-->
 <header class="site-header">
 <div class="wrap header-inner">
 <a href="/" class="logo">Steel<span>Chart</span></a>
@@ -74,5 +76,6 @@ gtag('consent', 'default', {'analytics_storage': 'granted', 'ad_storage': 'grant
 </div>
 </footer>
 <script src="{{ asset('site.js') }}" defer></script>
+<!--/email_off-->
 </body>
 </html>
